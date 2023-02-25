@@ -2,22 +2,16 @@ return {
     -- Various colorschemes
     "flazz/vim-colorschemes",
     "w0ng/vim-hybrid",
-    {
-        "ayu-theme/ayu-vim",
-        priority = 1000,
-        lazy = false,
-        config = function()
-            vim.cmd([[colorscheme ayu]])
 
-            -- Colorscheme overrides
-            -- Group names can be found with ':so $VIMRUNTIME/syntax/hitest.vim'
-            vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
-            vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "NONE", ctermbg = "NONE" })
-            vim.api.nvim_set_hl(0, "LineNr", { fg = "#E6B673" })
-            vim.api.nvim_set_hl(0, "Directory", { fg = "#E6B673" })
+  {
+        "rebelot/kanagawa.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            -- load the colorscheme here
+            vim.cmd([[colorscheme kanagawa]])
         end,
     },
-    "sainnhe/sonokai",
 
     -- Emmet
     "mattn/emmet-vim",

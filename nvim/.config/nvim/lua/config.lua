@@ -33,6 +33,9 @@ require("plugins.treesitter")
 
 -- Lsp + statusline
 require("plugins.lsp")
+--
+-- Lspsaga
+require("plugins.lspsaga")
 
 -- Auto completion
 require("plugins.cmp")
@@ -45,3 +48,10 @@ require("plugins.tree")
 
 -- Statusline
 require("plugins.statusline")
+
+-- Trouble
+require("plugins.trouble")
+
+-- Bufferline
+require("plugins.bufferline")
+

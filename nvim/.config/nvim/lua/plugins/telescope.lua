@@ -12,6 +12,7 @@ function M.config()
                 i = {
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
+                    ["<C-h>"] = actions.select_horizontal,
                 },
             },
         },
@@ -22,6 +23,7 @@ function M.config()
     vim.keymap.set("n", "<C-p>", builtin.git_files, {})
     vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, {})
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
     vim.keymap.set("n", "<leader>ff", builtin.resume, {})
 end
 

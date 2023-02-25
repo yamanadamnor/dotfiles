@@ -24,5 +24,12 @@ end
 -- Hide tilde empty line
 vim.o.fillchars = "eob: "
 ------------------------------------------
--- GO
+
+------------------------------------------
+-- Yank to clipboard on WSL
+vim.o.clipboard = "unnamedplus"
+
+------------------------------------------
+
+-- go
 require("config")
