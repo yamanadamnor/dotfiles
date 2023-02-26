@@ -27,9 +27,16 @@ vim.o.fillchars = "eob: "
 
 ------------------------------------------
 -- Yank to clipboard on WSL
+
 vim.o.clipboard = "unnamedplus"
+------------------------------------------
 
 ------------------------------------------
+-- VimTeX
+-- vim.g.vimtex_view_general_viewer = "~/.local/bin/sumatrapdf.sh"
+vim.g.vimtex_view_general_viewer = "SumatraPDF.exe"
+vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+vim.g.maplocalleader = ","
 
 -- go
 require("config")
