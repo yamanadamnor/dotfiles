@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
     -- defaults = { lazy = true },
-    install = { colorscheme = { "ayu" } },
+    install = { colorscheme = { "kanagawa" } },
     -- Automatically check of plugin updates
     checker = { enabled = true },
     -- Disable annoying change notification
@@ -55,3 +55,8 @@ require("plugins.trouble")
 -- Bufferline
 require("plugins.bufferline")
 
+-- Gitsigns
+require("plugins.gitsigns")
+
+-- Indent blankline
+require("plugins.indent-blankline")
