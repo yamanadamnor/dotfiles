@@ -10,15 +10,24 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:path color magenta
 prompt pure
 
+# For Loading the SSH key
+/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+source $HOME/.keychain/$HOST-sh
+
+
 # Set up Node Version Manager
-source /usr/share/nvm/init-nvm.sh --no-use
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Aliases
 alias vim="nvim"
 alias ..="cd .."
 alias ls="exa"
-alias ssh="kitty +kitten ssh" # terminfo fix
+alias ll="exa -la"
 alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
+alias zconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.lua"
+alias dotfiles="cd ~/dotfiles"
 
 # nnn configuration (use n instead of nnn)
 n ()
