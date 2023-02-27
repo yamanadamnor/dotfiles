@@ -11,7 +11,7 @@ local i = ls.insert_node
 
 return {
     -- Combining text and insert nodes to create basic LaTeX commands
-    s({ trig = "tt", wordTrig = false, dscr = "Expands 'tt' into '\texttt{}'" }, {
+    s({ trig = "tt", dscr = "Expands 'tt' into '\texttt{}'" }, {
         t("\\texttt{"), -- remember: backslashes need to be escaped
         i(1),
         t("}"),
