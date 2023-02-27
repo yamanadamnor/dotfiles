@@ -74,6 +74,12 @@ asynk() {
     synk -e 'ssh -p2222' $1 $2:SDCard/Movies
 }
 
+# Duplicate tab in WSL2
+keep_current_path() {
+  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+}
+precmd_functions+=(keep_current_path)
+
 # History
 HISTFILE=~/.zsh/.histfile
 HISTSIZE=1000
