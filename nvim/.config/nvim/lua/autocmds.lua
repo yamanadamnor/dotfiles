@@ -67,3 +67,13 @@ autocmd("Filetype", {
         )
     end,
 })
+
+augroup("ft_tex", { clear = true })
+autocmd("Filetype", {
+    group = "ft_tex",
+    pattern = { "tex" },
+    callback = function()
+        vim.opt_local.textwidth = 79
+        vim.opt_local.colorcolumn = "79"
+    end,
+})

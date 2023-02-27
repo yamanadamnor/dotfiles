@@ -63,26 +63,53 @@ return {
                 require("mason").setup({})
             end,
             dependencies = {
-                "williamboman/mason-lspconfig.nvim",
-                config = function()
-                    require("mason-lspconfig").setup({})
+                {
+                    "williamboman/mason-lspconfig.nvim",
+                    config = function()
+                        require("mason-lspconfig").setup({})
 
-                    require("mason-lspconfig").setup_handlers({
-                        -- Default handler
-                        function(server)
-                            local capabilities = require("cmp_nvim_lsp").default_capabilities(
-                                vim.lsp.protocol.make_client_capabilities()
-                            )
+                        require("mason-lspconfig").setup_handlers({
+                            -- Default handler
+                            function(server)
+                                local capabilities = require("cmp_nvim_lsp").default_capabilities(
+                                    vim.lsp.protocol.make_client_capabilities()
+                                )
 
-                            local opt = {
-                                on_attach = on_attach,
-                                capabilities = capabilities,
-                            }
+                                local opt = {
+                                    on_attach = on_attach,
+                                    capabilities = capabilities,
+                                }
 
-                            require("lspconfig")[server].setup(opt)
-                        end,
-                    })
-                end,
+                                require("lspconfig")[server].setup(opt)
+                            end,
+                            ["texlab"] = function()
+                                require("lspconfig")["texlab"].setup({
+                                    on_attach = on_attach,
+                                    capabilities = capabilities,
+                                    settings = {
+                                        texlab = {
+                                            build = {
+                                                args = {
+                                                    "-pdf",
+                                                    "-interaction=nonstopmode",
+                                                    "-synctex=1",
+                                                    "--shell-escape",
+                                                    "%f",
+                                                },
+                                                onSave = true,
+                                            },
+                                            forwardSearch = {
+                                                executable = "SumatraPDF.exe",
+                                                args = { "--synctex-forward", "%l:1:%f", "%p" },
+                                            },
+                                        },
+                                    },
+                                })
+                            end,
+                        })
+                    end,
+                },
+                {},
             },
         },
         {
