@@ -15,7 +15,6 @@ end
 local opts = { silent = true }
 
 vim.keymap.set("n", "<C-a>", "<cmd>Lspsaga code_action<CR>")
--- vim.keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_net<CR>")
 vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
 vim.keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
 vim.keymap.set("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>")
