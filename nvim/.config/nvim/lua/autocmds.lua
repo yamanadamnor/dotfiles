@@ -68,11 +68,12 @@ autocmd("Filetype", {
     end,
 })
 
-augroup("ft_tex", { clear = true })
+augroup("ft_docs", { clear = true })
 autocmd("Filetype", {
-    group = "ft_tex",
-    pattern = { "tex" },
+    group = "ft_docs",
+    pattern = { "tex", "latex", "markdown" },
     callback = function()
+        vim.opt_local.wrap = true
         vim.opt_local.textwidth = 79
         vim.opt_local.colorcolumn = "79"
     end,
