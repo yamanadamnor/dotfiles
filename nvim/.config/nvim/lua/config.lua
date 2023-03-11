@@ -17,7 +17,7 @@ require("lazy").setup("plugins", {
     -- defaults = { lazy = true },
     install = { colorscheme = { "kanagawa" } },
     -- Automatically check of plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
     -- Disable annoying change notification
     change_detection = { notify = false },
     -- debug = true,
