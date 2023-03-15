@@ -18,3 +18,6 @@ $ git submodule update --init --recursive
 `./setup.sh xfce` - symlinks xfce config dots  
 `./setup.sh packages` - installs arch base/community packages  
 `./setup.sh aur` - installs aur packages (and yay)  
+
+## Make VPN work on WSL2
+https://github.com/microsoft/WSL/issues/1908
