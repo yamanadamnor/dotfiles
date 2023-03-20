@@ -9,6 +9,18 @@ return {
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
+            require("kanagawa").setup({
+                transparent = true,
+                theme = "dark",
+                overrides = function()
+                    return {
+                        TelescopeBorder = { default = true, link = "TelescopeNormal" },
+                        TelescopePromptBorder = { default = true, link = "TelescopeBorder" },
+                        TelescopeResultsBorder = { default = true, link = "TelescopeBorder" },
+                        TelescopePreviewBorder = { default = true, link = "TelescopeBorder" },
+                    }
+                end,
+            })
             vim.cmd([[colorscheme kanagawa]])
         end,
     },
