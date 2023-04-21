@@ -1,5 +1,6 @@
 # Environment variables
 export ZDOTDIR="$HOME/.zsh"
+export ZSH="$ZDOTDIR/ohmyzsh"
 export FPATH="$FPATH:$HOME/.zsh/pure"
 export EDITOR=nvim
 export VISUAL=nvim
@@ -10,24 +11,21 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:path color magenta
 prompt pure
 
+
+# Oh My ZSH
+zstyle ':omz:plugins:nvm' lazy yes
+plugins=(
+  nvm
+  git
+)
+# ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
+
+
 # For Loading the SSH key
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
 
-
-# Set up Node Version Manager
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# Aliases
-alias vim="nvim"
-alias ..="cd .."
-alias ls="exa"
-alias ll="exa -la"
-alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
-alias zconfig="nvim ~/.zshrc"
-alias vimconfig="nvim ~/.config/nvim/init.lua"
-alias dotfiles="cd ~/dotfiles"
 
 # nnn configuration (use n instead of nnn)
 n ()
@@ -58,6 +56,7 @@ n ()
     fi
 }
 
+
 # c++: Compile and run the supplied file with
 # all inputs *.in in the cwd
 ccc() {
@@ -68,17 +67,13 @@ ccc() {
     done
 }
 
-# rsync files to Android movies folder (using sshelper)
-# $1 is src, $2 is ip
-asynk() {
-    synk -e 'ssh -p2222' $1 $2:SDCard/Movies
-}
 
 # Duplicate tab in WSL2
 keep_current_path() {
   printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
 }
 precmd_functions+=(keep_current_path)
+
 
 # History
 HISTFILE=~/.zsh/.histfile
@@ -109,3 +104,13 @@ autoload -Uz compinit; compinit
 # Ignore case matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+
+# Aliases
+alias vim="nvim"
+alias ..="cd .."
+alias ls="exa"
+alias ll="exa -la"
+alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
+alias zconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.lua"
+alias dotfiles="cd ~/dotfiles"
