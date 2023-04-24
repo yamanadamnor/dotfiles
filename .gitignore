@@ -1,5 +1,4 @@
 stow-build/
 
 .histfile
-.zcompdump
-.zcompdump.*
+.zcompdump*
