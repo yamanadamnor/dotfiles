@@ -16,8 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
     -- defaults = { lazy = true },
     install = { colorscheme = { "kanagawa" } },
-    -- Automatically check of plugin updates
-    checker = { enabled = false },
     -- Disable annoying change notification
     change_detection = { notify = false },
     -- debug = true,
@@ -28,35 +26,3 @@ require("lazy").setup("plugins", {
 -- Autocmds
 require("autocmds")
 
--- Treesitter (syntax, indent, ...)
-require("plugins.treesitter")
-
--- Lsp + statusline
-require("plugins.lsp")
---
--- Lspsaga
-require("plugins.lspsaga")
-
--- Auto completion
-require("plugins.cmp")
-
--- Autopairs
-require("plugins.autopairs")
-
--- File explorer
-require("plugins.tree")
-
--- Statusline
-require("plugins.statusline")
-
--- Trouble
-require("plugins.trouble")
-
--- Bufferline
-require("plugins.bufferline")
-
--- Gitsigns
-require("plugins.gitsigns")
-
--- Indent blankline
-require("plugins.indent-blankline")

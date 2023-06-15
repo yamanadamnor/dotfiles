@@ -3,6 +3,7 @@ return {
     "flazz/vim-colorschemes",
     "w0ng/vim-hybrid",
 
+    -- Colorscheme
     {
         "rebelot/kanagawa.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme

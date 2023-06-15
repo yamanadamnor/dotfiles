@@ -46,86 +46,88 @@ local on_attach = function(client, bufnr)
     end
 end
 
+
 return {
     "neovim/nvim-lspconfig",
-    dependencies = {
-        {
-            "folke/neodev.nvim",
-            config = function()
-                require("neodev").setup({})
-            end,
-        },
-        {
-            "williamboman/mason.nvim",
-            config = function()
-                require("mason").setup({})
-            end,
-            dependencies = {
-                {
-                    "williamboman/mason-lspconfig.nvim",
-                    config = function()
-                        require("mason-lspconfig").setup({})
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup({})
+        end,
+    },
+    -- Rust analyzer, debugger, inlay hints, etc. setup
+    "simrat39/rust-tools.nvim",
+    {
+        -- Neovim lua autocompletion
+        "folke/neodev.nvim",
+        config = function()
+            require("neodev").setup({})
+        end,
+    },
+    {
+        -- LSP server helpers
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            local capabilities =
+                require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-                        require("mason-lspconfig").setup_handlers({
-                            -- Default handler
-                            function(server)
-                                local capabilities = require("cmp_nvim_lsp").default_capabilities(
-                                    vim.lsp.protocol.make_client_capabilities()
-                                )
-
-                                local opt = {
-                                    on_attach = on_attach,
-                                    capabilities = capabilities,
-                                }
-
-                                require("lspconfig")[server].setup(opt)
-                            end,
-                            ["texlab"] = function()
-                                require("lspconfig")["texlab"].setup({
-                                    on_attach = on_attach,
-                                    capabilities = capabilities,
-                                    settings = {
-                                        texlab = {
-                                            build = {
-                                                args = {
-                                                    "-pdf",
-                                                    "-interaction=nonstopmode",
-                                                    "-synctex=1",
-                                                    "--shell-escape",
-                                                    "%f",
-                                                },
-                                                onSave = true,
-                                            },
-                                            forwardSearch = {
-                                                executable = "SumatraPDF.exe",
-                                                args = { "--synctex-forward", "%l:1:%f", "%p" },
-                                            },
-                                        },
+            require("mason-lspconfig").setup({})
+            require("mason-lspconfig").setup_handlers({
+                -- Default handler
+                function(server)
+                    require("lspconfig")[server].setup({ on_attach = on_attach, capabilities = capabilities })
+                end,
+                ["rust_analyzer"] = function()
+                    require("rust-tools").setup({
+                        server = {
+                            on_attach = on_attach,
+                            capabilities = capabilities,
+                        },
+                    })
+                end,
+                ["texlab"] = function()
+                    require("lspconfig")["texlab"].setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        settings = {
+                            texlab = {
+                                build = {
+                                    args = {
+                                        "-pdf",
+                                        "-interaction=nonstopmode",
+                                        "-synctex=1",
+                                        "--shell-escape",
+                                        "%f",
                                     },
-                                })
-                            end,
-                        })
-                    end,
+                                    onSave = true,
+                                },
+                                forwardSearch = {
+                                    executable = "zathura",
+                                    args = { "--synctex-forward", "%l:1:%f", "%p" },
+                                },
+                            },
+                        },
+                    })
+                end,
+            })
+        end,
+    },
+    {
+        -- LSP server for formatters, etc.
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local null_ls = require("null-ls")
+            null_ls.setup({
+                on_attach = on_attach,
+                sources = {
+                    null_ls.builtins.formatting.prettierd,
+                    null_ls.builtins.formatting.black.with({
+                        extra_args = { "--line-length", "79" },
+                    }),
+                    null_ls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
                 },
-                {},
-            },
-        },
-        {
-            "jose-elias-alvarez/null-ls.nvim",
-            dependencies = { "nvim-lua/plenary.nvim" },
-            config = function()
-                local null_ls = require("null-ls")
-                null_ls.setup({
-                    on_attach = on_attach,
-                    sources = {
-                        null_ls.builtins.formatting.prettierd,
-                        null_ls.builtins.formatting.black.with({
-                            extra_args = { "--line-length", "79" },
-                        }),
-                        null_ls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-                    },
-                })
-            end,
-        },
+            })
+        end,
     },
 }
