@@ -5,6 +5,8 @@ export FPATH="$FPATH:$HOME/.zsh/pure"
 export EDITOR=nvim
 export VISUAL=nvim
 export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
+export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+export DOTFILES="$HOME/dotfiles"
 
 # Set prompt
 autoload -U promptinit; promptinit
@@ -17,6 +19,7 @@ zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
   nvm
   git
+  conda-zsh-completion
 )
 # ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
@@ -25,6 +28,7 @@ source $ZSH/oh-my-zsh.sh
 # For Loading the SSH key
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
+
 
 
 # nnn configuration (use n instead of nnn)
@@ -112,5 +116,20 @@ alias ls="exa"
 alias ll="exa -la"
 alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
 alias zconfig="nvim ~/.zshrc"
-alias vimconfig="nvim ~/.config/nvim/init.lua"
+alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias dotfiles="cd ~/dotfiles"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/yams/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/yams/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/yams/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/yams/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
