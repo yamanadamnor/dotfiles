@@ -8,7 +8,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 ------------------------------------------
 -- Formatting (see :help nvim-defaults)
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.wrap = false
@@ -18,7 +17,6 @@ vim.o.expandtab = true
 vim.o.scrolloff = 3
 ------------------------------------------
 -- Style
-
 if vim.fn.has("termguicolors") then
     vim.o.termguicolors = true
 end
@@ -26,13 +24,20 @@ end
 -- Hide tilde empty line
 vim.o.fillchars = "eob: "
 ------------------------------------------
-
-------------------------------------------
 -- Yank to clipboard on WSL
-
-vim.o.clipboard = "unnamedplus"
-------------------------------------------
-
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" }) 
+vim.g.clipboard =  {
+    name= 'WslClipboard',
+    copy= {
+        ['+'] = 'clip.exe',
+        ['*'] = 'clip.exe',
+    },
+    paste = {
+        ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+}
 ------------------------------------------
 -- VimTeX
 
@@ -46,10 +51,7 @@ end
 vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
 vim.g.maplocalleader = ","
 ------------------------------------------
-
-------------------------------------------
 -- LuaSnip
-
 vim.cmd([[
 " Use Tab to expand and jump through snippets
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
@@ -61,6 +63,5 @@ smap <silent><expr> <S-Tab> luasnip#jumpable(-1) ? '<Plug>luasnip-jump-prev' : '
 ]])
 
 ------------------------------------------
-
--- go
+-- GO
 require("config")
