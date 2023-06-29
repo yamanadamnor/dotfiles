@@ -109,6 +109,18 @@ return {
                         },
                     })
                 end,
+                ["lua_ls"] = function()
+                    require("lspconfig")["lua_ls"].setup({
+                        settings = {
+                            lua = {
+                                diagnostics = {
+                                    -- Get the language server to recognize the `vim` global
+                                    globals = { 'vim' },
+                                },
+                            }
+                        }
+                    })
+                end,
             })
         end,
     },

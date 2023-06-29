@@ -25,3 +25,8 @@ https://github.com/microsoft/WSL/issues/1908
 
 ### Fix slow zsh due to NVM
 https://dev.to/thraizz/fix-slow-zsh-startup-due-to-nvm-408k
+
+### Copy to system clipboard (WSL2)
+Make sure to have win32yank.exe installed and added to your path.
+The easiest way is to install neovim on Windows.
+
