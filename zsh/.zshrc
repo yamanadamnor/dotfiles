@@ -29,8 +29,6 @@ source $ZSH/oh-my-zsh.sh
 /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
 source $HOME/.keychain/$HOST-sh
 
-
-
 # nnn configuration (use n instead of nnn)
 n ()
 {
@@ -117,7 +115,6 @@ alias ll="exa -la"
 alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
 alias zconfig="nvim ~/.zshrc"
 alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
-alias dotfiles="cd ~/dotfiles"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
