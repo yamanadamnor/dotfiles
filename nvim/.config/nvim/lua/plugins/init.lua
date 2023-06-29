@@ -6,7 +6,7 @@ return {
     -- Colorscheme
     {
         "rebelot/kanagawa.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
@@ -30,7 +30,14 @@ return {
     "mattn/emmet-vim",
 
     -- Commenting
-    "tpope/vim-commentary",
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require("Comment").setup({
+                pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+            })
+        end
+    },
 
     -- Change surrounding symbols
     "tpope/vim-surround",
