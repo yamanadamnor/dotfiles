@@ -1,5 +1,6 @@
 local M = {
     "nvim-telescope/telescope.nvim",
+
     tag = "0.1.1",
     dependencies = { "nvim-lua/plenary.nvim" },
 }
@@ -38,6 +39,8 @@ function M.config()
     vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>ff", builtin.resume, {})
+    vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
+    vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
 end
 
 return M
