@@ -11,6 +11,9 @@ local M = {
 
         -- LuaSnip completion source for nvim-cmp
         "saadparwaiz1/cmp_luasnip",
+
+        -- Github Copilot suggestions as cmp sources
+        "zbirenbaum/copilot-cmp",
     },
 }
 
@@ -19,6 +22,7 @@ function M.config()
     local luasnip = require("luasnip")
 
     local has_words_before = function()
+        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
@@ -58,6 +62,7 @@ function M.config()
             end, { "i", "s" }),
         },
         sources = cmp.config.sources({
+            { name = "copilot", group_index = 2 },
             { name = "nvim_lsp" },
             { name = "luasnip" },
         }, {
