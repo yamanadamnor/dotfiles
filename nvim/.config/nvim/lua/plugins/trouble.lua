@@ -1,6 +1,6 @@
 local M = {
     "folke/trouble.nvim",
-    requires = "nvim-tree/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
 }
 
 function M.config()
@@ -9,10 +9,10 @@ end
 
 local opts = { silent = true, noremap = true }
 
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+vim.keymap.set("n", "<leader>xx", function() require("trouble").open() end, opts)
+vim.keymap.set("n", "<leader>xw", function() require("trouble").open("workspace_diagnostics") end, opts)
+vim.keymap.set("n", "<leader>xd", function() require("trouble").open("document_diagnostics") end, opts)
+vim.keymap.set("n", "<leader>xq", function() require("trouble").open("quickfix") end, opts)
+vim.keymap.set("n", "<leader>xl", function() require("trouble").open("loclist") end, opts)
 
 return M
