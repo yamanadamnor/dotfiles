@@ -10,7 +10,7 @@ local function git_files_fallback()
     local builtin = require("telescope.builtin")
     vim.fn.system("git rev-parse --is-inside-work-tree")
     if vim.v.shell_error == 0 then
-        builtin.git_files()
+        builtin.git_files { git_command = { "git", "ls-files", "--exclude-standard", "--cached", "--deduplicate" } }
     else
         builtin.find_files()
     end
