@@ -70,6 +70,18 @@ ccc() {
 }
 
 
+lg() {
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+
+
 # Duplicate tab in WSL2
 keep_current_path() {
   printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
