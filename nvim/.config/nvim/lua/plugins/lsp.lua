@@ -109,6 +109,12 @@ return {
                         },
                     })
                 end,
+                ["clangd"] = function()
+                    require("lspconfig")["clangd"].setup({
+                        capabilities = { "utf-16" }
+                    })
+                end
+
             })
         end,
     },
