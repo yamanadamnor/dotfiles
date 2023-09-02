@@ -127,6 +127,7 @@ alias ll="exa -la"
 alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
 alias zconfig="nvim ~/.zshrc"
 alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
+alias w++17="g++ -std=c++17 -Wall -Wextra -Wpedantic"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
