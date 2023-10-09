@@ -17,9 +17,9 @@ prompt pure
 # Oh My ZSH
 zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
-  nvm
   git
   conda-zsh-completion
+  fnm
 )
 # ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
@@ -143,3 +143,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# fnm
+export PATH="/home/yams/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd)"
