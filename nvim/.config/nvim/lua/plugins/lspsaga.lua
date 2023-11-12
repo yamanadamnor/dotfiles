@@ -8,7 +8,11 @@ local M = {
 }
 
 function M.config()
-    require("lspsaga").setup({})
+    require("lspsaga").setup({
+        lightbulb = {
+            sign = false
+        }
+    })
 end
 
 local opts = { silent = true }
