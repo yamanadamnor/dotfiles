@@ -4,7 +4,7 @@ export ZSH="$ZDOTDIR/ohmyzsh"
 export FPATH="$FPATH:$HOME/.zsh/pure"
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm"
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export DOTFILES="$HOME/dotfiles"
 
@@ -13,9 +13,17 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:path color magenta
 prompt pure
 
+# Aliases
+alias vim="nvim"
+alias ..="cd .."
+alias ls="exa"
+alias ll="exa -la"
+alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
+alias zconfig="nvim ~/.zshrc"
+alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
+alias w++17="g++ -std=c++17 -Wall -Wextra -Wpedantic -Weffc++ -Wold-style-cast"
 
 # Oh My ZSH
-zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
   git
   conda-zsh-completion
@@ -118,17 +126,6 @@ autoload -Uz compinit; compinit
 # Ignore case matching
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-
-# Aliases
-alias vim="nvim"
-alias ..="cd .."
-alias ls="exa"
-alias ll="exa -la"
-alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
-alias zconfig="nvim ~/.zshrc"
-alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
-alias w++17="g++ -std=c++17 -Wall -Wextra -Wpedantic"
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/yams/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -145,5 +142,4 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # fnm
-export PATH="/home/yams/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+eval "`fnm env --use-on-cd`"
