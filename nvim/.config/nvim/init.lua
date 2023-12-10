@@ -2,6 +2,7 @@
 -- Miscellaneous
 vim.o.splitright = true
 vim.o.splitbelow = true
+vim.g.mapleader = " "
 
 -- Disable netrw (built-in file explorer) since we use nvim-tree
 vim.g.loaded_netrw = 1
