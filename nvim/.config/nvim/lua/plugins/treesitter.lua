@@ -2,11 +2,6 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-
-        -- Add tsx comment support
-        dependencies = {
-            'JoosepAlviste/nvim-ts-context-commentstring',
-        },
         opts = {
             ensure_installed = {
                 "c",
