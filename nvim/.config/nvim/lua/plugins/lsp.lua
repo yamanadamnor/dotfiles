@@ -28,7 +28,6 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
     buf_set_keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    buf_set_keymap("n", "<M-S-F>", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>", opts)
     buf_set_keymap("x", "<leader>fo", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
     -- Set autocommands conditional on server_capabilities
@@ -55,6 +54,7 @@ return {
             require("mason").setup({})
         end,
     },
+
     -- Rust analyzer, debugger, inlay hints, etc. setup
     "simrat39/rust-tools.nvim",
     {
@@ -68,10 +68,21 @@ return {
         -- LSP server helpers
         "williamboman/mason-lspconfig.nvim",
         config = function()
+            
             local capabilities =
                 require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-            require("mason-lspconfig").setup({})
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "emmet_ls",
+                    "eslint",
+                    "lua_ls",
+                    "tailwindcss",
+                    "tsserver",
+
+                },
+                automatic_installation = true
+            })
             require("mason-lspconfig").setup_handlers({
                 -- Default handler
                 function(server)
@@ -115,24 +126,6 @@ return {
                     })
                 end
 
-            })
-        end,
-    },
-    {
-        -- LSP server for formatters, etc.
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                on_attach = on_attach,
-                sources = {
-                    null_ls.builtins.formatting.prettierd,
-                    null_ls.builtins.formatting.black.with({
-                        extra_args = { "--line-length", "79" },
-                    }),
-                    null_ls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces" } }),
-                },
             })
         end,
     },
