@@ -3,6 +3,14 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local keymap_opts = { noremap = true, silent = true }
 
+augroup("lint_augroup", { clear = true })
+autocmd({"BufEnter", "BufWritePost", "InsertLeave"}, {
+    group = "lint_augroup",
+    callback = function ()
+        require("lint").try_lint()
+    end
+})
+
 augroup("ft_python", { clear = true })
 autocmd("Filetype", {
     group = "ft_python",
