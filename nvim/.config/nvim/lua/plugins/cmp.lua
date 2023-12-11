@@ -4,13 +4,6 @@ local M = {
     dependencies = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-nvim-lsp",
-        "L3MON4D3/LuaSnip",
-
-        -- Collection of snippets
-        "rafamadriz/friendly-snippets",
-
-        -- LuaSnip completion source for nvim-cmp
-        "saadparwaiz1/cmp_luasnip",
 
         -- Github Copilot suggestions as cmp sources
         "zbirenbaum/copilot-cmp",
@@ -19,7 +12,6 @@ local M = {
 
 function M.config()
     local cmp = require("cmp")
-    local luasnip = require("luasnip")
 
     local has_words_before = function()
         if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
@@ -28,11 +20,6 @@ function M.config()
     end
 
     cmp.setup({
-        snippet = {
-            expand = function(args)
-                luasnip.lsp_expand(args.body)
-            end,
-        },
         mapping = {
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -42,8 +29,6 @@ function M.config()
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
-                elseif luasnip.expand_or_jumpable() then
-                    luasnip.expand_or_jump()
                 elseif has_words_before() then
                     cmp.complete()
                 else
@@ -54,8 +39,6 @@ function M.config()
             ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) then
-                    luasnip.jump(-1)
                 else
                     fallback()
                 end
@@ -64,7 +47,6 @@ function M.config()
         sources = cmp.config.sources({
             { name = "copilot", group_index = 2 },
             { name = "nvim_lsp" },
-            { name = "luasnip" },
         }, {
             { name = "buffer" },
         }),
