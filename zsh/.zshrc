@@ -13,6 +13,15 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:path color magenta
 prompt pure
 
+# Oh My ZSH
+plugins=(
+  git
+  fnm
+)
+# ZSH_THEME="robbyrussell"
+source $ZSH/oh-my-zsh.sh
+
+
 # Aliases
 alias vim="nvim"
 alias ..="cd .."
@@ -22,15 +31,6 @@ alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
 alias zconfig="nvim ~/.zshrc"
 alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias w++17="g++ -std=c++17 -Wall -Wextra -Wpedantic -Weffc++ -Wold-style-cast"
-
-# Oh My ZSH
-plugins=(
-  git
-  conda-zsh-completion
-  fnm
-)
-# ZSH_THEME="robbyrussell"
-source $ZSH/oh-my-zsh.sh
 
 
 # For Loading the SSH key
