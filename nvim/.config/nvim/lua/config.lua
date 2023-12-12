@@ -26,3 +26,5 @@ require("lazy").setup("plugins", {
 -- Autocmds
 require("autocmds")
 
+-- Keymaps 
+require("keymaps")
