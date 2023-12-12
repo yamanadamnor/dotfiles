@@ -62,4 +62,6 @@ return {
 
 	-- Caddyfile support
 	"isobit/vim-caddyfile",
+
+	"dstein64/vim-startuptime",
 }
