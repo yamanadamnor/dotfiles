@@ -19,7 +19,8 @@ local opts = { silent = true }
 
 -- vim.keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>")
 vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-vim.keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>")
+vim.keymap.set("n", "<leader>ft", "<cmd>Lspsaga term_toggle<CR>")
+vim.keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>")
 vim.keymap.set("i", "<C-k>", "<cmd>Lspsaga signature_help<CR>")
 vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
