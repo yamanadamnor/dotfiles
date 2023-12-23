@@ -57,9 +57,6 @@ return {
 		end,
 	},
 
-	-- VimTeX
-	"lervag/vimtex",
-
 	-- Caddyfile support
 	"isobit/vim-caddyfile",
 

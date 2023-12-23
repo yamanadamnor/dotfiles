@@ -96,30 +96,6 @@ return {
                         },
                     })
                 end,
-                ["texlab"] = function()
-                    require("lspconfig")["texlab"].setup({
-                        on_attach = on_attach,
-                        capabilities = capabilities,
-                        settings = {
-                            texlab = {
-                                build = {
-                                    args = {
-                                        "-pdf",
-                                        "-interaction=nonstopmode",
-                                        "-synctex=1",
-                                        "--shell-escape",
-                                        "%f",
-                                    },
-                                    onSave = true,
-                                },
-                                forwardSearch = {
-                                    executable = "zathura",
-                                    args = { "--synctex-forward", "%l:1:%f", "%p" },
-                                },
-                            },
-                        },
-                    })
-                end,
                 ["clangd"] = function()
                     require("lspconfig")["clangd"].setup({
                         capabilities = { "utf-16" }
