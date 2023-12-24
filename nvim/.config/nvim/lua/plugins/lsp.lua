@@ -81,27 +81,21 @@ return {
                     "tsserver",
 
                 },
-                automatic_installation = true
-            })
-            require("mason-lspconfig").setup_handlers({
-                -- Default handler
-                function(server)
-                    require("lspconfig")[server].setup({ on_attach = on_attach, capabilities = capabilities })
-                end,
-                ["rust_analyzer"] = function()
-                    require("rust-tools").setup({
-                        server = {
-                            on_attach = on_attach,
-                            capabilities = capabilities,
-                        },
-                    })
-                end,
-                ["clangd"] = function()
-                    require("lspconfig")["clangd"].setup({
-                        capabilities = { "utf-16" }
-                    })
-                end
-
+                automatic_installation = true,
+                handlers = {
+                    -- Default handler
+                    function(server)
+                        require("lspconfig")[server].setup({ on_attach = on_attach, capabilities = capabilities })
+                    end,
+                    ["rust_analyzer"] = function()
+                        require("rust-tools").setup({
+                            server = {
+                                on_attach = on_attach,
+                                capabilities = capabilities,
+                            },
+                        })
+                    end,
+                }
             })
         end,
     },

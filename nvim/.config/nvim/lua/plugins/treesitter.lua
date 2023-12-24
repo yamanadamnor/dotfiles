@@ -16,6 +16,8 @@ return {
                 "latex",
                 "lua",
                 "make",
+                "markdown",
+                "markdown_inline",
                 "php",
                 "rust",
                 "scss",
