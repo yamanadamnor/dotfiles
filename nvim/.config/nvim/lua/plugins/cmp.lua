@@ -26,7 +26,8 @@ function M.config()
 			return false
 		end
 		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		return col ~= 0 and
+		    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 	end
 
 	cmp.setup({
@@ -65,20 +66,12 @@ function M.config()
 			end, { "i", "s" }),
 		},
 		sources = cmp.config.sources({
-			{ name = "copilot", group_index = 2 },
-			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
+			{ name = "nvim_lsp", group_index = 1 },
+			{ name = "copilot",  group_index = 2 },
+			{ name = "luasnip",  group_index = 2 },
 		}, {
 			{ name = "buffer" },
 		}),
-		window = {
-			completion = {
-				border = "rounded",
-			},
-			documentation = {
-				border = nil,
-			},
-		},
 	})
 
 	require("luasnip.loaders.from_vscode").lazy_load()
