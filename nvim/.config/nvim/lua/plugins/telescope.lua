@@ -1,6 +1,5 @@
 local M = {
     "nvim-telescope/telescope.nvim",
-
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
 }
@@ -18,8 +17,9 @@ end
 
 function M.config()
     local actions = require("telescope.actions")
+    local telescope = require("telescope")
 
-    require("telescope").setup({
+    telescope.setup({
         defaults = {
             mappings = {
                 i = {
@@ -35,12 +35,14 @@ function M.config()
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "<C-p>", git_files_fallback, {})
-    vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>ff", builtin.resume, {})
+    vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
     vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
+
+    vim.keymap.set("n", "<leader>sD", builtin.diagnostics, {})
 end
 
 return M
