@@ -31,6 +31,7 @@ alias synk="rsync -avhP --info=progress2" # archive, verbose, human, partial
 alias zconfig="nvim ~/.zshrc"
 alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim ~/.config/nvim/init.lua"
 alias w++17="g++ -std=c++17 -Wall -Wextra -Wpedantic -Weffc++ -Wold-style-cast"
+alias dotfiles="cd $DOTFILES"
 
 
 # For Loading the SSH key
