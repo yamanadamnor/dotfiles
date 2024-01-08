@@ -31,12 +31,13 @@ return {
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			require("catppuccin").setup({
+				flavor = "macchiato",
 				integrations = {
-					telescope = true
-				}
+					telescope = true,
+				},
 			})
 			vim.cmd([[colorscheme catppuccin]])
-		end
+		end,
 	},
 
 	-- Emmet

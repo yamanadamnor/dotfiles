@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
 	-- defaults = { lazy = true },
-	colorscheme = { "kanagawa" },
+	colorscheme = { "catppuccin" },
 	-- Disable annoying change notification
 	change_detection = { notify = false },
 	-- debug = true,
