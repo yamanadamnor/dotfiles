@@ -47,9 +47,10 @@ alias zconfig="nvim $DOTFILES/zsh/.zshrc"
 
 
 # For Loading the SSH key
-/usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-source $HOME/.keychain/$HOST-sh
-
+if uname -r | grep -q "microsoft"; then
+    /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
+    source $HOME/.keychain/$HOST-sh
+fi
 # nnn configuration (use n instead of nnn)
 n ()
 {
@@ -79,18 +80,6 @@ n ()
     fi
 }
 
-
-# c++: Compile and run the supplied file with
-# all inputs *.in in the cwd
-ccc() {
-    g++ -std=c++17 -O2 -g -Wall -pedantic "$@"
-    for file in *.in; do
-        echo "Input $file:"
-        ./a.out < "$file"; echo -e
-    done
-}
-
-
 lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
 
@@ -107,8 +96,10 @@ lg() {
 keep_current_path() {
   printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
 }
-precmd_functions+=(keep_current_path)
 
+if uname -r | grep -q "microsoft"; then
+    precmd_functions+=(keep_current_path)
+fi
 
 # History
 HISTFILE=~/.zsh/.histfile
