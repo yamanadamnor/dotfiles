@@ -1,12 +1,19 @@
 # Environment variables
+export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm"
+# zsh
 export ZDOTDIR="$HOME/.zsh"
 export ZSH="$ZDOTDIR/ohmyzsh"
 export FPATH="$FPATH:$HOME/.zsh/pure"
+
+export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$PATH:$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm"
-export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export DOTFILES="$HOME/dotfiles"
+
+# Lazygit
+export LG_CONFIG_DIR="$HOME/.config/lazygit"
+export LG_CONFIG_FILE="$LG_CONFIG_DIR/config.yml,$LG_CONFIG_DIR/themes/macchiato/blue.yml"
 
 # Set prompt
 autoload -U promptinit; promptinit
