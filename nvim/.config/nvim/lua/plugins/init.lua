@@ -1,6 +1,6 @@
 return {
 	-- Various colorschemes
-	"flazz/vim-colorschemes",
+	-- "flazz/vim-colorschemes",
 	"w0ng/vim-hybrid",
 
 	-- Colorscheme
