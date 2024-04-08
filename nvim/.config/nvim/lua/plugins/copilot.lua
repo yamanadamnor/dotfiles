@@ -1,12 +1,12 @@
 local M = {
-    "zbirenbaum/copilot.lua",
+	"zbirenbaum/copilot.lua",
 }
 
 function M.config()
-    require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-    })
+	require("copilot").setup({
+		suggestion = { enabled = false },
+		panel = { enabled = false },
+	})
 end
 
 return M
