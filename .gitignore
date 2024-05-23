@@ -4,3 +4,4 @@ stow-build/
 .zcompdump*
 .zcompcache*
 lazygit/.config/lazygit/state.yml
+nnn/.config/nnn/.lastd
