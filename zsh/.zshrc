@@ -1,3 +1,5 @@
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/bin:$PYENV_ROOT/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export EDITOR=nvim
@@ -7,16 +9,42 @@ export DOTFILES="$HOME/dotfiles"
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/.zsh"
 export FPATH="$FPATH:$ZDOTDIR/pure"
+export PNPM_HOME="$HOME/Library/pnpm"
 
+# mac only: Prevent homebrew from sending analytics
+export HOMEBREW_NO_ANALYTICS=1
+
+# Enable vim mode
+# Download https://github.com/jeffreytse/zsh-vi-mode first
+source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $ZDOTDIR/completion/init.zsh
+
+# PNPM
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+autoload -U +X bashcompinit && bashcompinit
+# autoload -Uz +X compinit && compinit
+
+# Getlab
+#+BEGIN_SRC shell
+source $HOME/Projects/getlab/getlab-completion.bash
+#+END_SRC
+
+# fnm
+eval "$(fnm env --use-on-cd)"
 
 # Lazygit
 export LG_CONFIG_DIR="$XDG_CONFIG_HOME/lazygit"
 export LG_CONFIG_FILE="$LG_CONFIG_DIR/config.yml,$LG_CONFIG_DIR/themes/macchiato/blue.yml"
 
-# Environment variables
+
+# Pyenv
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/bin:$PYENV_ROOT/bin:$PATH"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 . "$XDG_CONFIG_HOME/.zsh/aliases.zsh"
 . "$XDG_CONFIG_HOME/.zsh/functions.zsh"
@@ -37,45 +65,8 @@ then
 fi
 
 
+autoload -U promptinit; promptinit
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
 
-
-# For Loading the SSH key
-if uname -r | grep -q "microsoft"; then
-    /usr/bin/keychain -q --nogui $HOME/.ssh/id_ed25519
-    source $HOME/.keychain/$HOST-sh
-fi
-
-
-
-# Duplicate tab in WSL2
-keep_current_path() {
-  printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
-}
-
-if uname -r | grep -q "microsoft"; then
-    precmd_functions+=(keep_current_path)
-fi
-
-
-# Search history with prefix
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey -M vicmd 'j' down-line-or-beginning-search
-bindkey -M vicmd 'k' up-line-or-beginning-search
-
-# Vi-mode editing
-bindkey -v
-
-# Search history with Ctrl+R
-bindkey "^R" history-incremental-search-backward
-
-# pyenv
-eval "$(pyenv init -)"
-
-# fnm
-eval "`fnm env --use-on-cd`"
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "/Users/yamad09/.bun/_bun"
+prompt pure
