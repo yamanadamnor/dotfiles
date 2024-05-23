@@ -1,6 +1,3 @@
-[submodule "mpv/.config/mpv/scripts/mpvacious"]
-	path = mpv/.config/mpv/scripts/mpvacious
-	url = https://github.com/Ajatt-Tools/mpvacious
 [submodule "zsh/.config/.zsh/completion"]
 	path = zsh/.config/.zsh/completion
 	url = git@github.com:zimfw/completion.git
