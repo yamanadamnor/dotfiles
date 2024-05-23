@@ -6,7 +6,6 @@ export DOTFILES="$HOME/dotfiles"
 
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/.zsh"
-export ZSH="$ZDOTDIR/ohmyzsh"
 export FPATH="$FPATH:$ZDOTDIR/pure"
 
 
@@ -23,7 +22,7 @@ export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/b
 . "$XDG_CONFIG_HOME/.zsh/functions.zsh"
 
 # History
-HISTFILE=~/.zsh/.histfile
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob
@@ -36,24 +35,9 @@ if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
-#
-# Load and initialise completion system
-autoload -Uz compinit && compinit
-# Extended completion
-zstyle :compinstall filename "$ZDOTDIR/.zshrc"
-# Ignore case matching
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-# Set prompt
-autoload -U promptinit; promptinit
-zstyle :prompt:pure:path color magenta
-prompt pure
 
 
-# Oh My ZSH
-#
-# ZSH_THEME="robbyrussell"
-source $ZSH/oh-my-zsh.sh
+
 
 # For Loading the SSH key
 if uname -r | grep -q "microsoft"; then
