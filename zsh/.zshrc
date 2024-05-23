@@ -14,9 +14,19 @@ export PNPM_HOME="$HOME/Library/pnpm"
 # mac only: Prevent homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
 
+
 # Enable vim mode
-# Download https://github.com/jeffreytse/zsh-vi-mode first
+# bindkey -v
 source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# Search history with prefix
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey -M vicmd 'j' down-line-or-beginning-search
+bindkey -M vicmd 'k' up-line-or-beginning-search
+
 source $ZDOTDIR/completion/init.zsh
 
 # PNPM
