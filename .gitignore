@@ -1,5 +1,5 @@
 stow-build/
 
-.histfile
+.zsh_history
 .zcompdump*
 lazygit/.config/lazygit/state.yml
