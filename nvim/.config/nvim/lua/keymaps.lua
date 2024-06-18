@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local opts = { noremap, silent = true }
 
 -- Search TODOs
-keymap.set("n", "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>")
+keymap.set("n", "<leader>ft", "<cmd>Trouble todo keywords=TODO,FIX,FIXME<cr>")
 
 -- LSP
 
@@ -14,9 +14,6 @@ keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 
 -- Hover
 keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
-
--- Toggle floating terminal
-keymap.set("n", "<leader>ft", "<cmd>Lspsaga term_toggle<CR>")
 
 -- Peek references
 keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>")
