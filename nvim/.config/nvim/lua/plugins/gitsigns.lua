@@ -1,9 +1,9 @@
 local M = {
-    "lewis6991/gitsigns.nvim",
+  "lewis6991/gitsigns.nvim",
 }
 
 function M.config()
-    require("gitsigns").setup()
+  require("gitsigns").setup()
 end
 
 return M

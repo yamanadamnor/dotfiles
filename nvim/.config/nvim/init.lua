@@ -24,14 +24,14 @@ vim.g.skip_ts_context_commentstring_module = true
 
 -- Style
 if vim.fn.has("termguicolors") then
-    vim.o.termguicolors = true
+  vim.o.termguicolors = true
 end
 
 -- Hide tilde empty line
 vim.o.fillchars = "eob: "
 ------------------------------------------
 -- Yank to clipboard on WSL
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.clipboard = "unnamedplus"
 
 ------------------------------------------
 require("config")
