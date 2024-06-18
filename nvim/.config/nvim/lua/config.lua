@@ -28,3 +28,6 @@ require("autocmds")
 
 -- Keymaps
 require("keymaps")
+
+-- Filetypes
+require("filetypes")
