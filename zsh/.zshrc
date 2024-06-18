@@ -17,6 +17,11 @@ export HOMEBREW_NO_ANALYTICS=1
 
 # Enable vim mode
 # bindkey -v
+# Always starting with insert mode for each command line
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+  ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+}
 source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Search history with prefix
@@ -80,3 +85,4 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:git:stash show yes
 
 prompt pure
+source <(fzf --zsh)
