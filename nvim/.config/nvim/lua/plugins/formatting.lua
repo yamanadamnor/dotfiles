@@ -8,7 +8,7 @@ return {
       function()
         require("conform").format({ async = true, lsp_fallback = true })
       end,
-      mode = {"n", "v"},
+      mode = { "n", "v" },
       desc = "Format buffer or range in visual mode",
     },
   },
@@ -25,10 +25,11 @@ return {
 
       html = { { "prettierd", "prettier" } },
       css = { { "prettierd", "prettier" } },
-      javascript = { { "prettierd", "prettier" } },
-      typescript = { { "prettierd", "prettier" } },
-      javascriptreact = { { "prettierd", "prettier" } },
-      typescriptreact = { { "prettierd", "prettier" } },
+
+      javascript = { { "prettier", "prettierd" } },
+      typescript = { { "prettier", "prettierd" } },
+      javascriptreact = { { "prettier", "prettierd" } },
+      typescriptreact = { { "prettier", "prettierd" } },
     },
 
     -- Customize formatters
