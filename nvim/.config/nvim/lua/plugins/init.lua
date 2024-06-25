@@ -61,7 +61,7 @@ return {
   "tpope/vim-sleuth",
 
   -- Git stuff
-  -- "tpope/vim-fugitive",
+  "tpope/vim-fugitive",
 
   -- Highlight colors
   {
@@ -77,12 +77,6 @@ return {
     "luckasRanarison/tailwind-tools.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {}, -- your configuration
-  },
-  {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("neoscroll").setup({})
-    end,
   },
   "dstein64/vim-startuptime",
 }
