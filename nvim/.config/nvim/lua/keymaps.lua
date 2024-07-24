@@ -24,4 +24,4 @@ keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
 
 -- Rename
-keymap.set("n", "<leader>re", "<Cmd>Lspsaga rename<CR>")
+keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>")

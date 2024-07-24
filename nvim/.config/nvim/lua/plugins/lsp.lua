@@ -28,7 +28,6 @@ local on_attach = function(client, bufnr)
     opts
   )
   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
   buf_set_keymap("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -99,7 +98,6 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "emmet_ls",
-          "eslint",
           "lua_ls",
           "tailwindcss",
           "tsserver",

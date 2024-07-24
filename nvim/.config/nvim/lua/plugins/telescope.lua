@@ -41,8 +41,7 @@ function M.config()
   vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
   vim.keymap.set("n", "<leader>ff", builtin.resume, {})
   vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
-  vim.keymap.set("n", "<leader>gs", builtin.git_status, {})
-  vim.keymap.set("n", "<leader>gc", builtin.git_commits, {})
+  vim.keymap.set("n", "<leader>gs", builtin.grep_string, {})
 
   vim.keymap.set("n", "<leader>sD", builtin.diagnostics, {})
 end

@@ -7,6 +7,9 @@ return {
     update_focused_file = {
       enable = true,
     },
+    filters = {
+      git_ignored = false,
+    },
   },
   config = function(_, opts)
     require("nvim-tree").setup(opts)
