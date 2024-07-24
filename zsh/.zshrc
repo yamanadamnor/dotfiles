@@ -11,6 +11,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/.zsh"
 export FPATH="$FPATH:$ZDOTDIR/pure"
 export PNPM_HOME="$HOME/Library/pnpm"
 
+# Starshop
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
+
 # mac only: Prevent homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
 
