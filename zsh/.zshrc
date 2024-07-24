@@ -14,13 +14,12 @@ export PNPM_HOME="$HOME/Library/pnpm"
 # mac only: Prevent homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-
 # Enable vim mode
-# bindkey -v
-# Always starting with insert mode for each command line
 function zvm_config() {
+  # Always starting with insert mode for each command line
   ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
   ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+  ZVM_INIT_MODE=sourcing
 }
 source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
@@ -31,6 +30,8 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M vicmd 'j' down-line-or-beginning-search
 bindkey -M vicmd 'k' up-line-or-beginning-search
+# macOS workaround
+bindkey "ç" fzf-cd-widget
 
 source $ZDOTDIR/completion/init.zsh
 
@@ -41,7 +42,6 @@ case ":$PATH:" in
 esac
 
 autoload -U +X bashcompinit && bashcompinit
-# autoload -Uz +X compinit && compinit
 
 # Getlab
 #+BEGIN_SRC shell
@@ -76,12 +76,13 @@ setopt HIST_IGNORE_SPACE
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 if type brew &>/dev/null
 then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  FPATH="${FPATH}:$(brew --prefix)/share/zsh/site-functions"
+  autoload -Uz compinit
+  compinit
 fi
 
 
 autoload -U promptinit; promptinit
-# turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 
 prompt pure
