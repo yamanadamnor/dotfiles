@@ -81,9 +81,6 @@ then
   compinit
 fi
 
-
-autoload -U promptinit; promptinit
-zstyle :prompt:pure:git:stash show yes
-
-prompt pure
+eval "$(starship init zsh)"
+starship preset pure-preset -o ~/.config/starship.toml
 source <(fzf --zsh)
