@@ -5,6 +5,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$docker_context\
 $cmd_duration\
 $line_break\
 $python\
@@ -36,6 +37,12 @@ stashed = "≡"
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
+
+[docker_context]
+only_with_files = false
+format = ' [$symbol$context]($style)'
+symbol = '🐳 '
+style = 'bright-black'
 
 [cmd_duration]
 format = "[$duration]($style) "
