@@ -1,9 +1,0 @@
-[submodule "zsh/.config/.zsh/completion"]
-	path = zsh/.config/.zsh/completion
-	url = git@github.com:zimfw/completion.git
-[submodule "zsh/.config/.zsh/pure"]
-	path = zsh/.config/.zsh/pure
-	url = git@github.com:sindresorhus/pure.git
-[submodule "zsh/.config/.zsh/zsh-vi-mode"]
-	path = zsh/.config/.zsh/zsh-vi-mode
-	url = git@github.com:jeffreytse/zsh-vi-mode.git
