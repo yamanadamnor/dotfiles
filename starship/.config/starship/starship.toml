@@ -1,4 +1,3 @@
-"$schema" = 'https://starship.rs/config-schema.json'
 format = """
 $username\
 $hostname\
@@ -6,7 +5,6 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-$docker_context\
 $cmd_duration\
 $line_break\
 $python\
@@ -42,11 +40,6 @@ style = "bright-black"
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
-
-[docker_context]
-format = ' [$symbol$context]($style) '
-symbol = "🐋 "
-style = "bright-black"
 
 [python]
 format = "[$virtualenv]($style) "
