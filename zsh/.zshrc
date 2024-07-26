@@ -7,7 +7,7 @@ export VISUAL=nvim
 export DOTFILES="$HOME/dotfiles"
 
 # zsh
-export ZDOTDIR="$XDG_CONFIG_HOME/.zsh"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export FPATH="$FPATH:$ZDOTDIR/pure"
 export PNPM_HOME="$HOME/Library/pnpm"
 
