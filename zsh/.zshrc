@@ -64,8 +64,8 @@ export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-. "$XDG_CONFIG_HOME/.zsh/aliases.zsh"
-. "$XDG_CONFIG_HOME/.zsh/functions.zsh"
+. "$ZDOTDIR/aliases.zsh"
+. "$ZDOTDIR/functions.zsh"
 
 # History
 HISTFILE=$ZDOTDIR/.zsh_history
@@ -81,9 +81,7 @@ if type brew &>/dev/null
 then
   FPATH="${FPATH}:$(brew --prefix)/share/zsh/site-functions"
   autoload -Uz compinit
-  compinit
 fi
 
 eval "$(starship init zsh)"
-starship preset pure-preset -o ~/.config/starship.toml
 source <(fzf --zsh)
