@@ -40,12 +40,12 @@ style = "bright-black"
 
 [docker_context]
 only_with_files = false
-format = ' [$symbol$context]($style)'
-symbol = '🐳 '
-style = 'bright-black'
+format = " [$symbol$context]($style)"
+symbol = "🐳 "
+style = "bright-black"
 
 [cmd_duration]
-format = "[$duration]($style) "
+format = " [$duration]($style) "
 style = "yellow"
 
 [python]
