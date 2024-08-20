@@ -12,12 +12,17 @@ or after cloning:
 ```console
 $ git submodule update --init --recursive
 ```
+## Utilities for macOS
+- [LinearMouse](https://linearmouse.app/) - Control mouse and scroll acceleration for external mice
+- [Mos](https://mos.caldis.me/) - Smooth scrolling for external mice
+- [BetterDisplay](https://github.com/waydabber/BetterDisplay) - Control external display with keyboard shortcuts (Volume, brightness) + force HiDPI
+- [AltTab](https://alt-tab-macos.netlify.app/) - Make alt-tab feel like Windows with Vim motions
+- [Raycast](https://www.raycast.com/) - Better alternative to spotlight
+- [Bartender](https://www.macbartender.com/) - Control menu bar items on notched macbook
+- [BetterTouchTool](https://folivora.ai/) - Customize input devices such as mouse and trackpad
+- [Karabiner Elements](https://karabiner-elements.pqrs.org/) - Keyboard customizer for rebinding ctrl and fn (+more)
+- [Shottr](https://shottr.cc/) - Screenshot utility to replace the builtin one
 
-## script usage
-`./setup.sh i3` - symlinks i3 config dots  
-`./setup.sh xfce` - symlinks xfce config dots  
-`./setup.sh packages` - installs arch base/community packages  
-`./setup.sh aur` - installs aur packages (and yay)  
 
 ## Fixes
 ### Make VPN work on WSL2
