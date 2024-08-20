@@ -4,3 +4,6 @@
 [submodule "zsh/.config/zsh/completion"]
 	path = zsh/.config/zsh/completion
 	url = git@github.com:zimfw/completion.git
+[submodule "zsh/.config/zsh/fzf"]
+	path = zsh/.config/zsh/fzf
+	url = git@github.com:zimfw/fzf.git
