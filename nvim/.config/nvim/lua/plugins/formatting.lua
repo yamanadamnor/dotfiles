@@ -20,16 +20,16 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
 
-      json = { { "prettierd", "prettier" } },
-      yaml = { { "prettierd", "prettier" } },
+      json = { { "prettier" } },
+      yaml = { { "prettier" } },
 
-      html = { { "prettierd", "prettier" } },
-      css = { { "prettierd", "prettier" } },
+      html = { { "prettier" } },
+      css = { { "prettier" } },
 
-      javascript = { { "prettier", "prettierd" } },
-      typescript = { { "prettier", "prettierd" } },
-      javascriptreact = { { "prettier", "prettierd" } },
-      typescriptreact = { { "prettier", "prettierd" } },
+      javascript = { { "prettier" } },
+      typescript = { { "prettier" } },
+      javascriptreact = { { "prettier" } },
+      typescriptreact = { { "prettier" } },
     },
 
     -- Customize formatters
