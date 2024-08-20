@@ -67,11 +67,13 @@ bindkey -M menuselect 'l' vi-forward-char
 
 # History
 HISTFILE=$ZDOTDIR/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=3000
+SAVEHIST=3000
 setopt autocd extendedglob
 # Don't add to histfile if prefixed with space
 setopt HIST_IGNORE_SPACE
+setopt share_history
+setopt inc_append_history
 
 # homebrew completions
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
