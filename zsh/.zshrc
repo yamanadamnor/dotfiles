@@ -36,20 +36,11 @@ bindkey -M vicmd 'k' up-line-or-beginning-search
 # macOS workaround
 bindkey "ç" fzf-cd-widget
 
-source $ZDOTDIR/completion/init.zsh
-
 # PNPM
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
-autoload -U +X bashcompinit && bashcompinit
-
-# Getlab
-#+BEGIN_SRC shell
-source $HOME/Projects/getlab/getlab-completion.bash
-#+END_SRC
 
 # fnm
 eval "$(fnm env --use-on-cd)"
@@ -87,8 +78,11 @@ setopt HIST_IGNORE_SPACE
 if type brew &>/dev/null
 then
   FPATH="${FPATH}:$(brew --prefix)/share/zsh/site-functions"
-  autoload -Uz compinit
 fi
 
 eval "$(starship init zsh)"
-source <(fzf --zsh)
+source $ZDOTDIR/completion/init.zsh
+source $ZDOTDIR/fzf/init.zsh
+
+autoload -U bashcompinit && bashcompinit
+source $HOME/Projects/getlab/getlab-completion.bash
