@@ -1,0 +1,72 @@
+{
+  "schemes" : [
+    {
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "modifiers" : {
+          "vertical" : {
+            "command" : {
+              "type" : "pinchZoom"
+            }
+          }
+        },
+        "speed" : {
+          "vertical" : 0
+        },
+        "reverse" : {
+          "vertical" : true
+        },
+        "distance" : {
+          "vertical" : "auto"
+        }
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xfa59",
+          "vendorID" : "0x25a7",
+          "productName" : "2.4G Wireless Receiver"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.7383,
+        "disableAcceleration" : true,
+        "speed" : 0.1017
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productName" : "MX Master",
+          "productID" : "0xb01e",
+          "vendorID" : "0x46d",
+          "serialNumber" : "E16F491928473315",
+          "category" : "mouse"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "category" : "trackpad",
+          "productID" : "0x0",
+          "vendorID" : "0x0"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        }
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+}
