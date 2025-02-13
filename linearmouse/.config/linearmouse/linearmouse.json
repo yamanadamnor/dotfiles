@@ -1,9 +1,24 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
+      "if" : {
+        "device" : {
+          "productID" : "0xfa59",
+          "productName" : "2.4G Wireless Receiver",
+          "vendorID" : "0x25a7",
+          "category" : "mouse"
+        }
+      },
       "scrolling" : {
         "acceleration" : {
           "vertical" : 1
+        },
+        "distance" : {
+          "vertical" : "auto"
+        },
+        "speed" : {
+          "vertical" : 0
         },
         "modifiers" : {
           "vertical" : {
@@ -11,6 +26,30 @@
               "type" : "pinchZoom"
             }
           }
+        },
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.7383,
+        "speed" : 0.1017,
+        "disableAcceleration" : true
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productName" : "MX Master",
+          "category" : "mouse",
+          "productID" : "0xb01e",
+          "serialNumber" : "E16F491928473315",
+          "vendorID" : "0x46d"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
         },
         "speed" : {
           "vertical" : 0
@@ -21,52 +60,40 @@
         "distance" : {
           "vertical" : "auto"
         }
-      },
-      "if" : {
-        "device" : {
-          "category" : "mouse",
-          "productID" : "0xfa59",
-          "vendorID" : "0x25a7",
-          "productName" : "2.4G Wireless Receiver"
-        }
-      },
-      "pointer" : {
-        "acceleration" : 0.7383,
-        "disableAcceleration" : true,
-        "speed" : 0.1017
       }
     },
     {
-      "if" : {
-        "device" : {
-          "productName" : "MX Master",
-          "productID" : "0xb01e",
-          "vendorID" : "0x46d",
-          "serialNumber" : "E16F491928473315",
-          "category" : "mouse"
-        }
-      },
-      "scrolling" : {
-        "reverse" : {
-          "vertical" : true
-        }
-      }
-    },
-    {
-      "if" : {
-        "device" : {
-          "productName" : "Apple Internal Keyboard \/ Trackpad",
-          "category" : "trackpad",
-          "productID" : "0x0",
-          "vendorID" : "0x0"
-        }
-      },
       "scrolling" : {
         "acceleration" : {
           "vertical" : 1
         }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x0",
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "category" : "trackpad",
+          "productID" : "0x0"
+        }
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
+        }
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x45e",
+          "productID" : "0xcb",
+          "productName" : "Microsoft USB Optical Mouse",
+          "category" : "mouse"
+        }
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+  ]
 }
