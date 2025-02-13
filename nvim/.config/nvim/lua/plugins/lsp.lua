@@ -100,7 +100,7 @@ return {
           "emmet_ls",
           "lua_ls",
           "tailwindcss",
-          "tsserver",
+          "ts_ls",
         },
         automatic_installation = true,
         handlers = {
