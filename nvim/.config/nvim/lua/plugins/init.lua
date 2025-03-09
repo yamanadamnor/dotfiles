@@ -55,7 +55,10 @@ return {
   },
 
   -- Change surrounding symbols
-  "tpope/vim-surround",
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy"
+  },
 
   -- Detect indentation
   "tpope/vim-sleuth",
@@ -75,8 +78,15 @@ return {
   "isobit/vim-caddyfile",
   {
     "luckasRanarison/tailwind-tools.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    name = "tailwind-tools",
+    ft = { "html", "css", "javascriptreact", "typescriptreact", "templ" },
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional },
+    },
     opts = {}, -- your configuration
   },
-  "dstein64/vim-startuptime",
 }

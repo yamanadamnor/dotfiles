@@ -74,23 +74,18 @@ return {
   },
   {
     "williamboman/mason.nvim",
+    cmd = "Mason",
     config = function()
       require("mason").setup({})
-    end,
-  },
-
-  -- Rust analyzer, debugger, inlay hints, etc. setup
-  "simrat39/rust-tools.nvim",
-  {
-    -- Neovim lua autocompletion
-    "folke/neodev.nvim",
-    config = function()
-      require("neodev").setup({})
     end,
   },
   {
     -- LSP server helpers
     "williamboman/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
     config = function()
       local capabilities =
         require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -122,5 +117,14 @@ return {
         },
       })
     end,
+  },
+
+  -- Rust analyzer, debugger, inlay hints, etc. setup
+  "simrat39/rust-tools.nvim",
+  {
+    -- Neovim lua autocompletion
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
   },
 }
