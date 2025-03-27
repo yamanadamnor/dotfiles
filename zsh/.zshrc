@@ -33,8 +33,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M vicmd 'j' down-line-or-beginning-search
 bindkey -M vicmd 'k' up-line-or-beginning-search
-# macOS workaround
-bindkey "ç" fzf-cd-widget
 
 # PNPM
 case ":$PATH:" in
@@ -85,8 +83,11 @@ fi
 
 eval "$(starship init zsh)"
 source $XDG_CONFIG_HOME/zsh/completion/init.zsh
-source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
 source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
+
+# macOS workaround for fzf
+bindkey "ç" fzf-cd-widget
 
 autoload -U bashcompinit && bashcompinit
 source $HOME/Projects/getlab/getlab-completion.bash
