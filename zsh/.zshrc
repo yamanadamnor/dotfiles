@@ -5,9 +5,10 @@ export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export EDITOR=nvim
 export VISUAL=nvim
 export DOTFILES="$HOME/dotfiles"
+export LC_ALL="sv_SE.UTF-8"
 
 # zsh
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZDOTDIR="$HOME"
 export FPATH="$FPATH:$ZDOTDIR/pure"
 export PNPM_HOME="$HOME/Library/pnpm"
 
@@ -24,7 +25,6 @@ function zvm_config() {
   ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
   ZVM_INIT_MODE=sourcing
 }
-source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Search history with prefix
 autoload -U up-line-or-beginning-search
@@ -55,8 +55,8 @@ export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-. "$ZDOTDIR/aliases.zsh"
-. "$ZDOTDIR/functions.zsh"
+. "$XDG_CONFIG_HOME/zsh/aliases.zsh"
+. "$XDG_CONFIG_HOME/zsh/functions.zsh"
 
 # Navigate results using hjkl
 zmodload zsh/complist
@@ -66,7 +66,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
 # History
-HISTFILE=$ZDOTDIR/.zsh_history
+HISTFILE=$XDG_CONFIG_HOME/.zsh_history
 HISTSIZE=3000
 SAVEHIST=3000
 setopt autocd extendedglob
@@ -82,9 +82,11 @@ then
   FPATH="${FPATH}:$(brew --prefix)/share/zsh/site-functions"
 fi
 
+
 eval "$(starship init zsh)"
-source $ZDOTDIR/completion/init.zsh
-source $ZDOTDIR/fzf/init.zsh
+source $XDG_CONFIG_HOME/zsh/completion/init.zsh
+source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
+source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 autoload -U bashcompinit && bashcompinit
 source $HOME/Projects/getlab/getlab-completion.bash
