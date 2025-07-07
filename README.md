@@ -22,6 +22,10 @@ $ git submodule update --init --recursive
 - [BetterTouchTool](https://folivora.ai/) - Customize input devices such as mouse and trackpad
 - [Karabiner Elements](https://karabiner-elements.pqrs.org/) - Keyboard customizer for rebinding ctrl and fn (+more)
 - [Shottr](https://shottr.cc/) - Screenshot utility to replace the builtin one
+- [Lunar](https://lunar.fyi/) - Control monitor from the mac
+- [Clop](https://lowtechguys.com/clop/) - Optimise images as soon as you copy them
+- [Easy-move+resize](https://github.com/dmarcotte/easy-move-resize) - Adds Alt-drag to macOS
+- [Ghostty](https://ghostty.org/) - Terminal emulator
 
 
 ## Fixes
