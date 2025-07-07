@@ -57,7 +57,7 @@ return {
   -- Change surrounding symbols
   {
     "tpope/vim-surround",
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 
   -- Detect indentation

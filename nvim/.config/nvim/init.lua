@@ -27,6 +27,10 @@ if vim.fn.has("termguicolors") then
   vim.o.termguicolors = true
 end
 
+vim.o.cmdheight = 0
+
+vim.o.signcolumn = "yes:1"
+
 -- Hide tilde empty line
 vim.o.fillchars = "eob: "
 ------------------------------------------
