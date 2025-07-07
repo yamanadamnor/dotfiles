@@ -5,7 +5,7 @@ export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export EDITOR=nvim
 export VISUAL=nvim
 export DOTFILES="$HOME/dotfiles"
-export LC_ALL="sv_SE.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # zsh
 export ZDOTDIR="$HOME"
@@ -63,6 +63,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
+
 # History
 HISTFILE=$XDG_CONFIG_HOME/.zsh_history
 HISTSIZE=3000
@@ -80,14 +81,13 @@ then
   FPATH="${FPATH}:$(brew --prefix)/share/zsh/site-functions"
 fi
 
-
 eval "$(starship init zsh)"
 source $XDG_CONFIG_HOME/zsh/completion/init.zsh
 source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
 
 # macOS workaround for fzf
-bindkey "ç" fzf-cd-widget
+bindkey "^F" fzf-cd-widget
 
 autoload -U bashcompinit && bashcompinit
 source $HOME/Projects/getlab/getlab-completion.bash
