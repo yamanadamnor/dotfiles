@@ -91,21 +91,10 @@ return {
           "ts_ls",
         },
         automatic_installation = true,
-        handlers = {
-          -- Default handler
-          function(server)
-            require("lspconfig")[server].setup({
-              on_attach = on_attach,
-              capabilities = capabilities,
-            })
-          end,
-        },
+        automatic_enable = false,
       })
     end,
   },
-
-  -- Rust analyzer, debugger, inlay hints, etc. setup
-  "simrat39/rust-tools.nvim",
   {
     -- Neovim lua autocompletion
     "folke/lazydev.nvim",

@@ -13,7 +13,6 @@ return {
         "javascript",
         "gomod",
         "html",
-        "latex",
         "lua",
         "make",
         "markdown",
