@@ -48,11 +48,6 @@ export LG_CONFIG_DIR="$XDG_CONFIG_HOME/lazygit"
 export LG_CONFIG_FILE="$LG_CONFIG_DIR/config.yml,$LG_CONFIG_DIR/themes/macchiato/blue.yml"
 
 
-# Pyenv
-export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 . "$XDG_CONFIG_HOME/zsh/aliases.zsh"
 . "$XDG_CONFIG_HOME/zsh/functions.zsh"
 
@@ -88,6 +83,3 @@ source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
 
 # macOS workaround for fzf
 bindkey "^F" fzf-cd-widget
-
-autoload -U bashcompinit && bashcompinit
-source $HOME/Projects/getlab/getlab-completion.bash

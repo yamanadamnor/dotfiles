@@ -11,7 +11,7 @@ alias dotfiles="cd $DOTFILES"
 alias kittyconfig="nvim $DOTFILES/kitty/.config/kitty/kitty.conf"
 alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim $DOTFILES/nvim/.config/nvim/init.lua"
 alias zconfig="nvim $DOTFILES/zsh/.zshrc"
-alias getlab="python3 $HOME/Projects/getlab/staff_cli.py"
+alias sshconfig="nvim $HOME/.ssh/config"
 
 # Colorize help output with bat
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'

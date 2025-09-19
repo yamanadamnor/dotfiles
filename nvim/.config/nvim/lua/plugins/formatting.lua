@@ -20,16 +20,15 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
 
-      json = { "prettier" },
       yaml = { "prettier" },
-
       html = { "prettier" },
-      css = { "prettier" },
 
-      javascript = { "prettier" },
-      typescript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
+      css = { "biome-check" },
+      json = { "biome-check" },
+      javascript = { "biome-check" },
+      typescript = { "biome-check" },
+      javascriptreact = { "biome-check" },
+      typescriptreact = { "biome-check" },
     },
 
     -- Customize formatters
