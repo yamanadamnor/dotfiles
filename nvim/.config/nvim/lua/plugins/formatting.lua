@@ -25,6 +25,7 @@ return {
 
       css = { "biome-check" },
       json = { "biome-check" },
+      jsonc = { "biome-check" },
       javascript = { "biome-check" },
       typescript = { "biome-check" },
       javascriptreact = { "biome-check" },
