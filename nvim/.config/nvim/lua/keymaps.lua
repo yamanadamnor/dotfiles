@@ -1,27 +1,24 @@
 local keymap = vim.keymap
 local opts = { noremap, silent = true }
 
--- Search TODOs
-keymap.set("n", "<leader>ft", "<cmd>Trouble todo keywords=TODO,FIX,FIXME<cr>")
-
 -- LSP
 
 -- Code actions
-keymap.set("n", "<space>ca", "<cmd>Lspsaga code_action<CR>")
+keymap.set("n", "<space>ca", vim.lsp.buf.code_action)
 
 -- Diagnostics
-keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-
--- Hover
-keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+keymap.set("n", "<C-j>", function()
+  vim.diagnostic.jump({
+    count = 1,
+    float = true
+  })
+end)
 
 -- Peek references
-keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>")
+keymap.set("n", "gr", require("telescope.builtin").lsp_references, {})
 
 -- Definitions
-keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
-keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
-keymap.set("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>")
+keymap.set("n", "gd", vim.lsp.buf.definition)
 
 -- Rename
-keymap.set("n", "<leader>rn", "<Cmd>Lspsaga rename<CR>")
+keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
