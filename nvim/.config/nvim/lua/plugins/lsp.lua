@@ -6,25 +6,6 @@ vim.lsp.buf.format {
 return {
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            format = {
-              enable = true,
-              defaultConfig = {
-                indent_style = "space",
-                indent_size = "2",
-              },
-            },
-          },
-        },
-      })
-    end,
   },
   {
     "williamboman/mason.nvim",
@@ -43,7 +24,6 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",
           "tailwindcss",
           "ts_ls",
           "biome"
