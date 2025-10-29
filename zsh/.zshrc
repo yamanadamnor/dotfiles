@@ -10,7 +10,7 @@ export LC_ALL="en_US.UTF-8"
 # zsh
 export ZDOTDIR="$HOME"
 export FPATH="$FPATH:$ZDOTDIR/pure"
-export PNPM_HOME="$HOME/Library/pnpm"
+export PNPM_HOME="$HOME/.pnpm"
 
 # Starshop
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
