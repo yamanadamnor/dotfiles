@@ -1,8 +1,4 @@
 return {
-  -- Various colorschemes
-  -- "flazz/vim-colorschemes",
-  "w0ng/vim-hybrid",
-
   -- Colorscheme
   {
     "catppuccin/nvim",
@@ -11,9 +7,7 @@ return {
     config = function()
       require("catppuccin").setup({
         flavor = "macchiato",
-        integrations = {
-          telescope = true,
-        },
+        auto_integrations = true,
       })
       vim.cmd([[colorscheme catppuccin]])
     end,
@@ -52,11 +46,6 @@ return {
       require("colorizer").setup({})
     end,
   },
-  {
-    "themaxmarchuk/tailwindcss-colors.nvim",
-    event = "LspAttach", -- load when an LSP attaches
-  },
-
   -- Caddyfile support
   "isobit/vim-caddyfile",
 }
