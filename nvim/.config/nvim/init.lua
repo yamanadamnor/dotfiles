@@ -27,15 +27,19 @@ if vim.fn.has("termguicolors") then
   vim.o.termguicolors = true
 end
 
+-- Hide cmdline
 vim.o.cmdheight = 0
 
+-- Always use one signcolumn to prevent layout shifts
 vim.o.signcolumn = "yes:1"
+-- Rounded borders on floating windows
+vim.o.winborder = "rounded"
 
 -- Hide tilde empty line
 vim.o.fillchars = "eob: "
 ------------------------------------------
--- Yank to clipboard on WSL
-vim.opt.clipboard = "unnamedplus"
+-- Use system clipboard
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
 ------------------------------------------
 require("config")
