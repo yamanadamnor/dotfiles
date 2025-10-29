@@ -4,27 +4,6 @@ return {
   "w0ng/vim-hybrid",
 
   -- Colorscheme
-  -- {
-  -- 	"rebelot/kanagawa.nvim",
-  -- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  -- 	priority = 1000, -- make sure to load this before all the other start plugins
-  -- 	config = function()
-  -- 		-- load the colorscheme here
-  -- 		require("kanagawa").setup({
-  -- 			transparent = true,
-  -- 			theme = "dark",
-  -- 			overrides = function()
-  -- 				return {
-  -- 					TelescopeBorder = { default = true, link = "TelescopeNormal" },
-  -- 					TelescopePromptBorder = { default = true, link = "TelescopeBorder" },
-  -- 					TelescopeResultsBorder = { default = true, link = "TelescopeBorder" },
-  -- 					TelescopePreviewBorder = { default = true, link = "TelescopeBorder" },
-  -- 				}
-  -- 			end,
-  -- 		})
-  -- 		vim.cmd([[colorscheme kanagawa]])
-  -- 	end,
-  -- },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -73,20 +52,11 @@ return {
       require("colorizer").setup({})
     end,
   },
+  {
+    "themaxmarchuk/tailwindcss-colors.nvim",
+    event = "LspAttach", -- load when an LSP attaches
+  },
 
   -- Caddyfile support
   "isobit/vim-caddyfile",
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
-    ft = { "html", "css", "javascriptreact", "typescriptreact", "templ" },
-    build = ":UpdateRemotePlugins",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim", -- optional
-      "neovim/nvim-lspconfig", -- optional },
-    },
-    opts = {}, -- your configuration
-  },
 }
