@@ -20,7 +20,7 @@ local capabilities = {
 local on_attach = function(client, bufnr)
   -- Mappings
   local opts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
@@ -42,13 +42,6 @@ vim.lsp.config(
     root_markers = { ".git" },
   }
 )
-
-vim.lsp.config("tailwindcss", {
-  on_attach = function(_, bufnr)
-    require("tailwindcss-colors").buf_attach(bufnr)
-  end,
-})
-
 vim.lsp.enable({
   "lua_ls",
   "ts_ls",
