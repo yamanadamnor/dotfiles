@@ -21,8 +21,8 @@ return {
       python = { "isort", "black" },
 
       yaml = { "prettier" },
-      html = { "prettier" },
 
+      html = { "biome-check" },
       css = { "biome-check" },
       json = { "biome-check" },
       jsonc = { "biome-check" },
