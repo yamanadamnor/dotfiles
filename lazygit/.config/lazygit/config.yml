@@ -1,9 +1,8 @@
 git:
-  parseEmoji: true 
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
-
+  parseEmoji: true
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 theme:
   activeBorderColor:
     - "#c6a0f6"
