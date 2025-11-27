@@ -20,6 +20,7 @@ return {
         "lua",
         "markdown",
         "php",
+        "prisma",
         "rust",
         "scss",
         "tsx",
@@ -42,6 +43,7 @@ return {
   -- Auto close and rename HTML tags
   {
     "windwp/nvim-ts-autotag",
+    event = "BufRead",
     config = function()
       require("nvim-ts-autotag").setup({})
     end,

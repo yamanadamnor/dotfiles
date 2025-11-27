@@ -1,9 +1,4 @@
 -- Never request typescript-language-server for formatting
-vim.lsp.buf.format({
-  filter = function(client)
-    return client.name ~= "ts_ls"
-  end,
-})
 local capabilities = {
   textDocument = {
     foldingRange = {
@@ -30,18 +25,16 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<C-j>", function()
     vim.diagnostic.jump({ count = 1, float = true })
   end)
-  vim.keymap.set("n", "<space>q", vim.lsp.diagnostic.set_loclist, opts)
 end
 
-vim.lsp.config(
-  "*",
+vim.lsp.config("*",
   --- @type vim.lsp.Config
   {
-    capabilities = require("blink.cmp").get_lsp_capabilities(capabilities),
     on_attach = on_attach,
-    root_markers = { ".git" },
+    capabilities = require("blink.cmp").get_lsp_capabilities(capabilities),
   }
 )
+
 vim.lsp.enable({
   "lua_ls",
   "ts_ls",
@@ -55,7 +48,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    cmd = "Mason",
+    cmd = { "Mason", "MasonInstall", "MasonUpdate", "MasonLog", "MasonUninstall", "MasonUninstallAll" },
     config = function()
       require("mason").setup({})
     end,
@@ -80,6 +73,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
+          "lua_ls",
           "tailwindcss",
           "ts_ls",
           "biome",
