@@ -219,6 +219,11 @@ window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
+
+window-rule {
+    match app-id="^excel$"
+    default-column-width { proportion 0.5; }
+}
 window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
@@ -258,6 +263,13 @@ window-rule {
     match app-id="zoom"
     open-floating true
 }
+
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="zoom"
+    open-floating true
+}
+
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
