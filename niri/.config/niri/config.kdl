@@ -37,6 +37,10 @@ output "eDP-1" {
     // position x=0 y=0
 }
 
+output "LG Electronics 27GL850 008NTYT1T794" {
+    mode "2560x1440@74.971"
+    scale 1
+}
 
 gestures {
     hot-corners {
