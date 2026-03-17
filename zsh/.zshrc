@@ -5,12 +5,13 @@ export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export EDITOR=nvim
 export VISUAL=nvim
 export DOTFILES="$HOME/dotfiles"
-export LC_ALL="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
 
 # zsh
 export ZDOTDIR="$HOME"
 export FPATH="$FPATH:$ZDOTDIR/pure"
 export PNPM_HOME="$HOME/.pnpm"
+export FNM_PATH="$HOME/.local/share/fnm"
 
 # Starshop
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
@@ -41,7 +42,12 @@ case ":$PATH:" in
 esac
 
 # fnm
-eval "$(fnm env --use-on-cd)"
+
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+  eval "$(fnm env --use-on-cd)"
+fi
 
 # Lazygit
 export LG_CONFIG_DIR="$XDG_CONFIG_HOME/lazygit"
@@ -77,9 +83,18 @@ then
 fi
 
 eval "$(starship init zsh)"
+
+# When running in WSL
+if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ];
+then
+  eval $(wsl2-ssh-agent)
+fi
+
+# macOS workaround for fzf
+if [[ "${FZF_ALT_C_COMMAND-x}" != "" ]]; then
+    bindkey "^F" fzf-cd-widget
+fi
+
 source $XDG_CONFIG_HOME/zsh/completion/init.zsh
 source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
-
-# macOS workaround for fzf
-bindkey "^F" fzf-cd-widget
