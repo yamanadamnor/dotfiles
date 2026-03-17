@@ -29,3 +29,12 @@ n ()
         rm -f -- "$NNN_TMPFILE" > /dev/null
     }
 }
+
+if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ];
+then
+    keep_current_path() {
+      printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+    }
+    precmd_functions+=(keep_current_path)
+fi
+
