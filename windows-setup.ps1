@@ -5,42 +5,6 @@
 $REPEAT_DELAY = 175
 $REPEAT_RATE = 16
 
-$ChocoPackages = @(
-    '7zip.install'
-    'adb'
-    'altsnap'
-    'discord.install'
-    'docker-desktop'
-    'ffmpeg'
-    'firefox /l:sv-SE'
-    'git.install --params /NoShellIntegration /WindowsTerminal /SChannel'
-    'googlechrome'
-    'googledrive'
-    'gsudo'
-    'keeweb'
-    'mpv'
-    'mullvad-app'
-    'parsec'
-    'powertoys'
-    'python'
-    'sharex'
-    'spotify'
-    'slack'
-    'vscode.install'
-)
-
-function Install-Packages {
-
-    param (
-        [Parameter(Mandatory)]
-        $PackageList
-    )
-
-    foreach ($Package in $PackageList) {
-        choco install -y $Package.split()
-    }
-}
-
 function Set-RepeatRate {
 
     param (
@@ -80,13 +44,6 @@ function New-TerminalContextMenuEntry {
 function Invoke-Setup {
     # Set the keyboard repeat rate
     Set-RepeatRate -Delay $REPEAT_DELAY -Rate $REPEAT_RATE
-
-    # Install all chocolatey packages
-    Install-Packages -PackageList $ChocoPackages
-
-    # Remember chocolatey install flags
-    choco feature enable --name=useRememberedArgumentsForUpgrades
-
 
     Write-Output "Done! Re-login for FilterKeys settings to take effect."
 }
