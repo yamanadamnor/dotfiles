@@ -9,7 +9,7 @@ export DOTFILES="$HOME/dotfiles"
 
 # zsh
 export ZDOTDIR="$HOME"
-export FPATH="$FPATH:$ZDOTDIR/pure"
+export FPATH="$FPATH:$HOME/.local/share/zsh/completions/"
 export PNPM_HOME="$HOME/.pnpm"
 export FNM_PATH="$HOME/.local/share/fnm"
 
