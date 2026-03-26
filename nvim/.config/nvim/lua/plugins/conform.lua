@@ -20,16 +20,16 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
 
-      yaml = { "prettier" },
+      yaml = { "oxfmt" },
 
-      html = { "biome-check" },
-      css = { "biome-check" },
-      json = { "biome-check" },
-      jsonc = { "biome-check" },
-      javascript = { "biome-check" },
-      typescript = { "biome-check" },
-      javascriptreact = { "biome-check" },
-      typescriptreact = { "biome-check" },
+      html = { "oxfmt" },
+      css = { "oxfmt" },
+      json = { "oxfmt" },
+      jsonc = { "oxfmt" },
+      javascript = { "oxfmt" },
+      typescript = { "oxfmt" },
+      javascriptreact = { "oxfmt" },
+      typescriptreact = { "oxfmt" },
     },
 
     -- Customize formatters
