@@ -36,15 +36,11 @@ return {
   -- Detect indentation
   "tpope/vim-sleuth",
 
-  -- Git stuff
-  "tpope/vim-fugitive",
-
   -- Highlight colors
   {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({})
-    end,
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {},
   },
   -- Caddyfile support
   "isobit/vim-caddyfile",
