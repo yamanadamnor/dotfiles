@@ -1,8 +1,13 @@
 local M = {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    'barrettruth/blink-cmp-ghostty',
+  },
 
+
+  --
   -- use a release tag to download pre-built binaries
   version = "1.*",
   -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -31,11 +36,7 @@ local M = {
       ["<C-e>"] = {},
 
       -- show with a list of providers
-      ["<C-space>"] = {
-        function(cmp)
-          cmp.show({ providers = { "lsp", "buffer" } })
-        end,
-      },
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
     },
 
     appearance = {
@@ -54,7 +55,13 @@ local M = {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "buffer" },
+      default = { "lsp", "path", "buffer", "omni", "snippets", "ghostty" },
+      providers = {
+        ghostty = {
+          name = 'Ghostty',
+          module = 'blink-cmp-ghostty',
+        },
+      },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
