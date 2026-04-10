@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  tag = "v0.1.9",
+  version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -25,6 +25,7 @@ end
 
 function M.config()
   local actions = require("telescope.actions")
+  local open_with_trouble = require("trouble.sources.telescope").open
   local telescope = require("telescope")
 
   telescope.setup({
@@ -43,7 +44,11 @@ function M.config()
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
           ["<C-h>"] = actions.select_horizontal,
+          ["<C-t>"] = open_with_trouble
         },
+        n = {
+          ["<C-t>"] = open_with_trouble
+        }
       },
     },
   })
