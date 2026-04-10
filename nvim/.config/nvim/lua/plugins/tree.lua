@@ -27,6 +27,9 @@ return {
     filters = {
       git_ignored = false,
     },
+    view = {
+      width = 40
+    }
   },
   config = function(_, opts)
     require("nvim-tree").setup(opts)
