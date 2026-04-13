@@ -3,7 +3,7 @@ local M = {
   opts = {},
 }
 
-vim.keymap.set("n", "<leader>cds", "<Plug>CandelaUI", {
+vim.keymap.set("n", "<leader>cds", "<Plug>CandelaUi", {
   desc = "[Candela] toggle UI window",
   silent = true,
 })
