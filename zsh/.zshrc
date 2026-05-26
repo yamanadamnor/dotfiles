@@ -1,17 +1,19 @@
-export BUN_INSTALL="$HOME/.bun"
 export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/bin:$PYENV_ROOT/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+export ZDOTDIR="$HOME"
 export EDITOR=nvim
 export VISUAL=nvim
 export DOTFILES="$HOME/dotfiles"
+export PROJECTS="$HOME/projects/"
 # export LC_ALL="en_US.UTF-8"
 
 # zsh
-export ZDOTDIR="$HOME"
-export FPATH="$FPATH:$HOME/.local/share/zsh/completions/"
+export DOTNET_ROOT="$HOME/.dotnet"
 export PNPM_HOME="$HOME/.pnpm"
+export BUN_INSTALL="$HOME/.bun"
 export FNM_PATH="$HOME/.local/share/fnm"
+export FPATH="$FPATH:$HOME/.local/share/zsh/completions/"
 
 # Starshop
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
@@ -30,32 +32,18 @@ function zvm_config() {
 # Search history with prefix
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
+autoload -U add-zsh-hook
+
+# Make the tab in Windows terminal show the cwd
+function set-title() {
+  print -Pn "\e]0;%1~\a"
+}
+add-zsh-hook precmd set-title
+
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey -M vicmd 'j' down-line-or-beginning-search
 bindkey -M vicmd 'k' up-line-or-beginning-search
-
-# PNPM
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# fnm
-
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell zsh)"
-  eval "$(fnm env --use-on-cd)"
-fi
-
-# Lazygit
-export LG_CONFIG_DIR="$XDG_CONFIG_HOME/lazygit"
-export LG_CONFIG_FILE="$LG_CONFIG_DIR/config.yml,$LG_CONFIG_DIR/themes/macchiato/blue.yml"
-
-
-. "$XDG_CONFIG_HOME/zsh/aliases.zsh"
-. "$XDG_CONFIG_HOME/zsh/functions.zsh"
 
 # Navigate results using hjkl
 zmodload zsh/complist
@@ -63,6 +51,39 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+
+# PNPM
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PATH:$PNPM_HOME" ;;
+esac
+
+# fnm
+
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$PATH:$FNM_PATH"
+  eval "$(fnm env --shell zsh)"
+  eval "$(fnm env --use-on-cd)"
+fi
+
+if [ -d "$BUN_INSTALL" ]; then
+    export PATH="$PATH:$BUN_INSTALL"
+    export FPATH="$FPATH:$BUN_INSTALL"
+fi
+
+
+# .NET
+if [ -d "$DOTNET_ROOT" ]; then
+    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+fi
+
+
+# Lazygit
+export LG_CONFIG_DIR="$XDG_CONFIG_HOME/lazygit"
+export LG_CONFIG_FILE="$LG_CONFIG_DIR/config.yml,$LG_CONFIG_DIR/themes/macchiato/blue.yml"
+
+. "$XDG_CONFIG_HOME/zsh/aliases.zsh"
+. "$XDG_CONFIG_HOME/zsh/functions.zsh"
 
 
 # History
