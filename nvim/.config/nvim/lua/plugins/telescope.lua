@@ -65,7 +65,8 @@ function M.config()
   vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
   vim.keymap.set("n", "<leader>ff", builtin.resume, {})
   vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
-  vim.keymap.set("n", "<leader>gs", builtin.grep_string, {})
+  vim.keymap.set("x", "<leader>fi", builtin.grep_string, {})
+  vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {})
 
   vim.keymap.set("n", "<leader>sD", builtin.diagnostics, {})
 end
