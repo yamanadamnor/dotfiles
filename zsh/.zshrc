@@ -59,18 +59,17 @@ case ":$PATH:" in
 esac
 
 # fnm
-
 if [ -d "$FNM_PATH" ]; then
   export PATH="$PATH:$FNM_PATH"
   eval "$(fnm env --shell zsh)"
   eval "$(fnm env --use-on-cd)"
 fi
 
+# bun
 if [ -d "$BUN_INSTALL" ]; then
     export PATH="$PATH:$BUN_INSTALL"
     export FPATH="$FPATH:$BUN_INSTALL"
 fi
-
 
 # .NET
 if [ -d "$DOTNET_ROOT" ]; then
