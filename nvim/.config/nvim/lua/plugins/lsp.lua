@@ -43,20 +43,12 @@ vim.lsp.config("*",
     }
 )
 
-vim.lsp.enable({
-    "lua_ls",
-    "ts_ls",
-    "tailwindcss",
-    "biome",
-    "roslyn"
-})
-
 return {
     {
         "neovim/nvim-lspconfig",
     },
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         cmd = { "Mason", "MasonInstall", "MasonUpdate", "MasonLog", "MasonUninstall", "MasonUninstallAll" },
         config = function()
             require("mason").setup({
@@ -69,28 +61,23 @@ return {
     },
     {
         -- LSP server helpers
-        "williamboman/mason-lspconfig.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        opts = {
-            ensure_installed = {
-                "lua_ls",
-                "tailwindcss",
-                "ts_ls",
-                "biome"
-            },
-            automatic_enable = false,
-        },
+        "mason-org/mason-lspconfig.nvim",
+        opts = {},
         dependencies = {
-            "williamboman/mason.nvim",
+            { "mason-org/mason.nvim", opts = {} },
             "neovim/nvim-lspconfig",
         },
+
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
                     "tailwindcss",
                     "ts_ls",
-                    "biome",
+                    "oxlint",
+                    "oxfmt",
+                    "taplo"
                 },
                 automatic_installation = true,
                 automatic_enable = true,
