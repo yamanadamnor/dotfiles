@@ -62,13 +62,10 @@ function M.config()
 
   vim.keymap.set("n", "<C-p>", git_files_fallback, {})
   vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, {})
-  vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
   vim.keymap.set("n", "<leader>ff", builtin.resume, {})
   vim.keymap.set("n", "<leader>fi", builtin.live_grep, {})
   vim.keymap.set("x", "<leader>fi", builtin.grep_string, {})
-  vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {})
-
-  vim.keymap.set("n", "<leader>sD", builtin.diagnostics, {})
+  vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, {})
 end
 
 return M
