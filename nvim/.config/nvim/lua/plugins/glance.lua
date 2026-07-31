@@ -8,6 +8,11 @@ return {
             desc = "LSP Definitions (Glance)",
         },
         {
+            "gt",
+            "<cmd>Glance type_definitions<CR>",
+            desc = "LSP Type Definitions (Glance)",
+        },
+        {
             "gr",
             "<cmd>Glance references<CR>",
             desc = "LSP References (Glance)",
