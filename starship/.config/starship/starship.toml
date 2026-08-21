@@ -13,6 +13,7 @@ $docker_context\
 $cmd_duration\
 $line_break\
 $python\
+$vagrant\
 $character"""
 
 [directory]
