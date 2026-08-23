@@ -1,3 +1,4 @@
+eval $(keychain --quiet --eval id_ed25519 id_ed25519_lintek)
 export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/bin:$PYENV_ROOT/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
@@ -118,3 +119,4 @@ fi
 source $XDG_CONFIG_HOME/zsh/completion/init.zsh
 source $XDG_CONFIG_HOME/zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $XDG_CONFIG_HOME/zsh/fzf/init.zsh
+
