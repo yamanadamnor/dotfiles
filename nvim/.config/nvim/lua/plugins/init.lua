@@ -16,17 +16,6 @@ return {
     -- Emmet
     "mattn/emmet-vim",
 
-    -- Comment support for TSX support
-    {
-
-        "JoosepAlviste/nvim-ts-context-commentstring",
-        config = function()
-            require("ts_context_commentstring").setup({
-                enable_autocmd = false,
-            })
-        end,
-    },
-
     -- Change surrounding symbols
     {
         "tpope/vim-surround",

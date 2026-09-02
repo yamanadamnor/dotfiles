@@ -18,10 +18,6 @@ vim.o.expandtab = true
 vim.o.scrolloff = 3
 ------------------------------------------
 
--- Comment
-vim.g.skip_ts_context_commentstring_module = true
-------------------------------------------
-
 -- Style
 if vim.fn.has("termguicolors") then
   vim.o.termguicolors = true
