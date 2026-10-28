@@ -1,10 +1,6 @@
 local M = {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = {
-        'barrettruth/blink-cmp-ghostty',
-    },
-
 
     --
     -- use a release tag to download pre-built binaries
@@ -54,13 +50,7 @@ local M = {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "path", "buffer", "omni", "snippets", "ghostty" },
-            providers = {
-                ghostty = {
-                    name = 'Ghostty',
-                    module = 'blink-cmp-ghostty',
-                },
-            },
+            default = { "lsp", "path", "buffer", "omni", "snippets" },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
