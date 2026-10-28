@@ -1,23 +1,26 @@
-eval $(keychain --quiet --eval id_ed25519 id_ed25519_lintek)
 export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.local/share/fnm:$BUN_INSTALL/bin:$PYENV_ROOT/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
 export ZDOTDIR="$HOME"
 export EDITOR=nvim
 export VISUAL=nvim
-export DOTFILES="$HOME/dotfiles"
-export PROJECTS="$HOME/projects/"
-# export LC_ALL="en_US.UTF-8"
 
 # zsh
-export DOTNET_ROOT="$HOME/.dotnet"
-export PNPM_HOME="$HOME/.pnpm"
-export BUN_INSTALL="$HOME/.bun"
+export DOTNET_ROOT="$XDG_CONFIG_HOME/dotnet"
+export PNPM_HOME="$XDG_CONFIG_HOME/pnpm"
+export BUN_INSTALL="$XDG_CONFIG_HOME/bun"
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
+
 export FNM_PATH="$HOME/.local/share/fnm"
 export FPATH="$FPATH:$HOME/.local/share/zsh/completions/"
 
-# Starshop
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
+# Keychain
+KEYCHAIN_KEYS=(
+    $HOME/.ssh/id_ed25519
+    $HOME/.ssh/id_rsa
+)
+eval "$(keychain --allow-env --quiet add --immediate --eval "${KEYCHAIN_KEYS[@]}")"
+
 
 # mac only: Prevent homebrew from sending analytics
 export HOMEBREW_NO_ANALYTICS=1
@@ -108,7 +111,7 @@ eval "$(starship init zsh)"
 # When running in WSL
 if [ $(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip') ];
 then
-  eval $(wsl2-ssh-agent)
+    eval $(wsl2-ssh-agent)
 fi
 
 # macOS workaround for fzf
