@@ -16,10 +16,9 @@ export FPATH="$FPATH:$HOME/.local/share/zsh/completions/"
 
 # Keychain
 KEYCHAIN_KEYS=(
-    $HOME/.ssh/id_ed25519
-    $HOME/.ssh/id_rsa
+    "$HOME/.ssh/id_ed25519"
+    "$HOME/.ssh/id_rsa"
 )
-eval "$(keychain --allow-env --quiet add --immediate --eval "${KEYCHAIN_KEYS[@]}")"
 
 
 # mac only: Prevent homebrew from sending analytics
@@ -114,6 +113,7 @@ then
     eval $(wsl2-ssh-agent)
 fi
 
+eval "$(keychain --quiet add --eval "${KEYCHAIN_KEYS[@]}")"
 # macOS workaround for fzf
 if [[ "${FZF_ALT_C_COMMAND-x}" != "" ]]; then
     bindkey "^F" fzf-cd-widget
