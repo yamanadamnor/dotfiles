@@ -1,19 +1,9 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+; Poor mans MX Master
 ;==========================================================
-; SETTINGS
-;==========================================================
-
-; Horizontal distance required to trigger the gesture.
-GestureThreshold := 70
-
-; Horizontal movement must be greater than vertical movement.
-DirectionRatio := 1.5
-
-
-;==========================================================
-; ALT + MOUSE3
+; WIN + MOUSE3
 ;
 ; Click:
 ;   Play/Pause
@@ -27,7 +17,14 @@ DirectionRatio := 1.5
 ; Only ONE desktop switch can occur per button hold.
 ;==========================================================
 
-LAlt & MButton::
+; Horizontal distance required to trigger the gesture.
+GestureThreshold := 70
+
+; Horizontal movement must be greater than vertical movement.
+DirectionRatio := 1.5
+
+
+LWin & MButton::
 {
     global GestureThreshold, DirectionRatio
 
@@ -84,13 +81,34 @@ LAlt & MButton::
 ; MEDIA CONTROLS
 ;==========================================================
 
-LAlt & XButton1::Send "{Media_Prev}"
-LAlt & XButton2::Send "{Media_Next}"
+LWin & XButton1::Send "{Media_Prev}"
+LWin & XButton2::Send "{Media_Next}"
 
 
 ;==========================================================
 ; VOLUME CONTROLS
 ;==========================================================
 
-LAlt & WheelUp::Send "{Volume_Up}"
-LAlt & WheelDown::Send "{Volume_Down}"
+LWin & WheelUp::Send "{Volume_Up}"
+LWin & WheelDown::Send "{Volume_Down}"
+
+
+; VIM Motions in alt-tab
+
+; hjkl arrowing binds for Task Switcher
+#HotIf WinActive("ahk_class XamlExplorerHostIslandWindow")
+h::Send "{Left}"
+l::Send "{Right}"
+j::Send "{Down}"
+k::Send "{Up}"
+!h::Send "{blind}{Left}"                                    ; {blind} is required so AHK doesn't register ALT key being lifted.
+!l::Send "{blind}{Right}"
+!j::Send "{blind}{Down}"
+!k::Send "{blind}{Up}"
+#HotIf
+
+; hjkl arrowing binds for Window Snapping
+#+h::Send "{blind}{Left}"      ; hjkl binds for Window Snapping.
+#+l::Send "{blind}{Right}"     ; This works really well with Powertoys FancyZones
+#+j::Send "{blind}{Down}"      ; when "Override Windows Snap" is set to ON
+#+k::Send "{blind}{Up}"        ; and "Move windows based on" is set to "Relative Position"
