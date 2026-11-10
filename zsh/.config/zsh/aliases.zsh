@@ -5,9 +5,9 @@ alias ll="eza -la"
 alias lg="lazygit"
 alias synk="rsync -s  --size-only -avhP --info=progress2" # archive, verbose, human, partial
 alias checkports="sudo lsof -i -P | grep LISTEN | grep :$PORT"
-alias dotfiles="cd $DOTFILES"
-alias vimconfig="cd $DOTFILES/nvim/.config/nvim && nvim $DOTFILES/nvim/.config/nvim/init.lua"
-alias zconfig="nvim $DOTFILES/zsh/.zshrc"
+alias dotfiles="cd $HOME/dotfiles/"
+alias vimconfig="cd $HOME/dotfiles/nvim/.config/nvim && nvim $HOME/dotfiles/nvim/.config/nvim/init.lua"
+alias zconfig="nvim $HOME/.zshrc"
 alias sshconfig="nvim $HOME/.ssh/config"
 
 # Colorize help output with bat
