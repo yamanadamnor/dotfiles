@@ -1,6 +1,6 @@
 local M = {
   "FabijanZulj/blame.nvim",
-  lazy = false,
+  lazy = true,
   config = function()
     require("blame").setup({})
   end,
